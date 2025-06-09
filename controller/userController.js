@@ -1,5 +1,6 @@
 const db = require("../db/dbConfig.js");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 async function register(req, res) {
   const { username, firstname, lastname, email, password } = req.body;
@@ -63,15 +64,24 @@ async function login(req, res) {
       return res.status(400).json({ msg: "Invalid credentials" });
     }
 
-    //Success response
-    return res.status(200).json({
-      msg: "Login successful",
-      user: {
-        userid: user[0].userid,
-        username: user[0].username,
-        email,
-      },
+    const username = user[0].username;
+    const userid = user[0].userid;
+
+    const token = jwt.sign({ username, userid }, "secrete", {
+      expiresIn: "1d",
     });
+
+    return res.status(200).json({ msg: "user login successfully", token });
+
+    //Success response
+    // return res.status(200).json({
+    //   msg: "Login successful",
+    //   user: {
+    //     userid: user[0].userid,
+    //     username: user[0].username,
+    //     email,
+    //   },
+    // });
   } catch (error) {
     console.log(error.message);
     return res
