@@ -35,6 +35,7 @@ router.get("/create-table", async (req, res) => {
         questionid VARCHAR(100) NOT NULL,
         answer VARCHAR(200) NOT NULL,
         FOREIGN KEY(userid) REFERENCES users(userid),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY(questionid) REFERENCES questions(questionid)
       );
     `;
