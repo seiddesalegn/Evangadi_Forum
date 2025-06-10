@@ -1,0 +1,35 @@
+.footer{
+    background-color: #3b455a;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    width: 100%;
+}
+.footer img{
+    margin-bottom: 8px;
+}
+.footer h3{
+    font-size: 18px;
+    margin: 10px 0;
+    color: #fff;
+}
+footer a{
+    padding: 8px 10px;
+    text-decoration: none;
+    color: #ccc;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footerContainer h3 {
+        margin-bottom: 5px;
+    }
+    .footerContainer a {
+        margin-bottom: 5px;
+    }
+}

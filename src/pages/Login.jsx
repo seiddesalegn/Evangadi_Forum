@@ -1,0 +1,64 @@
+import React, { useRef } from 'react'
+import axiosInstance from '../Axios';
+import { Link } from 'react-router-dom';
+import style from './login.module.css'
+
+import About from './About';
+function Login() {
+//   const navigate = useNavigate()
+
+  const email = useRef(null)
+  const password = useRef(null)
+  async function handleSubmit(event) {
+    event.preventDefault();
+   const  emailValue =  email.current.value;
+    const passwordValue = password.current.value;
+    // You can add validation here if needed
+    if ( !emailValue || !passwordValue) {
+        alert("Please fill in all fields.");
+        return;
+    }
+    try{
+        const {data} =  await axiosInstance.post('/users/login', {
+            email:emailValue,
+            password:passwordValue
+        });
+        alert("Login successful!");
+        // navigate("/home")
+        localStorage.setItem("token : ", data.token);
+        localStorage.setItem("username : ", data.userName);
+        const username = data.userName;
+        console.log(username);
+        
+    }catch(error) {
+        console.error("Error during registration:", error);
+        alert(error?.response?.data?.message)
+    }
+    
+}
+  return (
+    <section className={style.wrapper}>
+    <div className={style.login}>
+        <h2>Login to your Account</h2>
+        <div>
+            <span>Don't have account? 
+        <Link to={"/register"}>Create Account</Link></span>
+        </div>
+      <form onSubmit={handleSubmit} className={style.loginform}>
+            <div>
+                <label htmlFor="email">Email</label>
+                <input type="email" ref={email} id="email" name="email" placeholder='Enter your Email' required />
+            </div>
+            <br />
+            <div>
+                <label htmlFor="password">Password</label>
+                <input type="password" ref={password} id="password" name="password" placeholder='Enter your password' required />
+            </div>
+            <button type="submit">login</button>
+        </form>
+    </div>
+    <About />
+    </section>
+  )
+}
+export default Login

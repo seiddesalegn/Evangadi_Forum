@@ -1,0 +1,99 @@
+.wrapper{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.loginform{
+    padding: 20px 0 50px;
+}
+.login{
+    border: 1px solid #ccc;
+    box-shadow: 0 5px 8px #ccc;
+    margin: 5px 10px;
+    padding: 45px;
+    max-width: 400px;
+    width: 45%;
+}
+.logi:hover{
+    padding: 20px;
+}
+.aboutsection{
+    margin: 5px 10px;
+    padding: 25px;
+    max-width: 500px;
+    width: 45%;
+    text-align: justify;
+}
+.login div, .login form{
+    padding-left: 3px;
+}
+.login form input {
+    display: block;
+    padding: 10px;
+    width: 94%;
+    border: 1px solid #ccc;
+    outline: none;
+
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.login span {
+    margin-bottom: 12px 0;
+}
+.login span a{
+    border: none;
+    color: #ff4500;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: underline;
+    font-family: inherit;
+    padding-left: 6px;
+}
+.about{
+    color: #ff4500;
+    font-size: 24px;
+}
+.login button, .aboutsection button{
+    width: 100%;
+    padding: 12px;
+    background-color: #ff8500;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color .3s ease, transform .3s ease;
+    font-family: inherit;
+}
+.login h2, .aboutsection h1{
+    color: #2d385e;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #2d385e;
+}
+
+.aboutsection h1{
+    font-size: 37px;
+}
+.aboutsection p{
+    margin: 8px 0;
+}
+
+@media (max-width: 480px){
+    .login{
+        width: 76%;
+        padding: 20px;
+    }
+    .aboutsection{
+        width: 90%;
+    }
+.login h2, .aboutsection h1{
+    font-size: 17px;
+}
+
+}
