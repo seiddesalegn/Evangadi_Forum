@@ -1,11 +1,14 @@
 import React, { useRef } from 'react'
 import axiosInstance from '../Axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import style from './login.module.css'
 
 import About from './About';
+import { useState } from 'react';
 function Login() {
-//   const navigate = useNavigate()
+    
+  const [error, setError] = useState(false)
+  const navigate = useNavigate()
 
   const email = useRef(null)
   const password = useRef(null)
@@ -14,17 +17,17 @@ function Login() {
    const  emailValue =  email.current.value;
     const passwordValue = password.current.value;
     // You can add validation here if needed
-    if ( !emailValue || !passwordValue) {
-        alert("Please fill in all fields.");
-        return;
-    }
+    // if ( !emailValue || !passwordValue) {
+    //     alert("Please fill in all fields.");
+    //     return;
+    // }
     try{
         const {data} =  await axiosInstance.post('/users/login', {
             email:emailValue,
             password:passwordValue
         });
         alert("Login successful!");
-        // navigate("/home")
+        navigate("/home")
         localStorage.setItem("token : ", data.token);
         localStorage.setItem("username : ", data.userName);
         const username = data.userName;
@@ -32,13 +35,17 @@ function Login() {
         
     }catch(error) {
         console.error("Error during registration:", error);
-        alert(error?.response?.data?.message)
+        setError(true)
     }
     
 }
   return (
     <section className={style.wrapper}>
     <div className={style.login}>
+        
+            {
+                error&&(<span style={{color:"red"}}>something went wrong</span>)
+            }
         <h2>Login to your Account</h2>
         <div>
             <span>Don't have account? 

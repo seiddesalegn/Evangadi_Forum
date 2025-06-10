@@ -3,6 +3,7 @@ import axiosInstance from '../Axios';
 import style from './login.module.css'
 import { Link, useNavigate } from 'react-router-dom';
 import About from './About';
+import { useState } from 'react';
 function Register() {
     const userName = useRef(null);
     const firstName = useRef(null);
@@ -10,7 +11,8 @@ function Register() {
     const password = useRef(null);
     const email = useRef(null);
     const navigate = useNavigate();
-
+    const [field, setField] = useState(false)
+    const [error, setError] = useState(false)
 
 async function handleSubmit(event) {
     event.preventDefault();
@@ -22,7 +24,7 @@ async function handleSubmit(event) {
     
     // You can add validation here if needed
     if (!userValue || !firstNameValue || !lastNameValue || !emailValue || !passwordValue) {
-        alert("Please fill in all fields.");
+        setField(true);
         return;
     }
     
@@ -38,7 +40,9 @@ async function handleSubmit(event) {
         navigate('/login'); // Redirect to login page after successful registration
 
     }catch(error) {
-        alert("Error during registration: or User exist", error);
+        console.log(error);
+        
+        setError(true);
     }
     
 }
@@ -47,6 +51,12 @@ async function handleSubmit(event) {
     <section className={style.wrapper}>
     <div className={style.login}>
         <div>
+            {
+                field&&(<span style={{color:"red"}}>Please fill in all fields.</span>)
+            }
+            {
+                error&&(<span style={{color:"red"}}>Error ocurred during registration: or User exist</span>)
+            }
             <h2>Join the Community</h2>
             <span>Already have account? 
         <Link to={"/login"}>login</Link></span>
