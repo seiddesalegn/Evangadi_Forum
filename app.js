@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const port = 5500;
@@ -14,11 +15,15 @@ const userRoutes = require("./routes/userRoute.js");
 const questionRoutes = require("./routes/questionRoute.js");
 const answerRoutes = require("./routes/answerRoute.js");
 
+// auth middleware import
+
+const authMiddleware = require("./middleware/authMiddleware");
+
 // Use routes (middleware)
 app.use("/", createTableRoute);
-app.use("/api/users", userRoutes);
-app.use("/api/question", questionRoutes);
-app.use("/api/answer", answerRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/question", authMiddleware, questionRoutes);
+app.use("/api/answer", authMiddleware, answerRoutes);
 
 // Start function
 async function start() {

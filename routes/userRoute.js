@@ -13,6 +13,6 @@ router.post("/register", register);
 router.post("/login", login);
 
 // check user
-router.get("/check", authMiddleware, checkUser);
+router.get("/check", checkUser);
 
 module.exports = router;

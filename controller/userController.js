@@ -20,7 +20,7 @@ async function register(req, res) {
 
     if (user.length > 0) {
       return res
-        .status(StatusCodes.BAD_REQUEST)
+        .status(StatusCodes.CONFLICT)
         .json({ msg: "User already registered" });
     }
 
@@ -80,7 +80,7 @@ async function login(req, res) {
 
     const { username, userid } = user[0];
 
-    const token = jwt.sign({ username, userid }, "secrete", {
+    const token = jwt.sign({ username, userid }, process.env.jwt_SECRET, {
       expiresIn: "1d",
     });
 
@@ -96,7 +96,9 @@ async function login(req, res) {
 }
 
 async function checkUser(req, res) {
-  res.status(StatusCodes.OK).send("Check user");
+  const username = req.user.username;
+  const userid = req.user.userid;
+  res.status(StatusCodes.OK).json({ msg: "user verified", username, userid });
 }
 
 module.exports = { register, login, checkUser };
