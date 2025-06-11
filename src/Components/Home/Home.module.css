@@ -1,0 +1,61 @@
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 25px auto;
+}
+.welcome p {
+  margin-right: 95px;
+}
+
+.askbtn {
+  background-color: #516cf0;
+  color: #fff !important;
+  border: none;
+  outline: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 19px;
+  padding: 5px 0;
+  height: 30px;
+  text-align: center;
+  width: 170px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.homeContainer section {
+  width: 80%;
+  margin: 0 auto;
+}
+.homeContainer .askpara {
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 12px 30px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+.homeContainer .askpara button {
+  margin-right: 24px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: #fff;
+  font-size: 24px;
+}
+.askpara p {
+  font-size: 22px;
+}
+.homeContainer h3 {
+  color: #2d385e;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #2d385e;
+}
+.homeContainer a {
+  text-decoration: none;
+  color: #000;
+}
