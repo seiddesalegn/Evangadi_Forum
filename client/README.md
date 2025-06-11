@@ -1,14 +1,30 @@
+<h1>📚 Evangadi Forum</h1>
+<hr />
 
-🔗 [Live demo](https://incredible-pasca-c266e7.netlify.app/)
-# React + Vite
+<p>
+  Welcome to the <strong>Evangadi Forum</strong> – a collaborative platform where students ask questions and other students provide helpful answers.
+  It’s a full-stack community-powered site built with ❤️ by team effort during our Evangadi graduation project.
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p>
+  🔗 <strong>Live Demo:</strong>
+  <a href="https://incredible-pasca-c266e7.netlify.app/" target="_blank">https://incredible-pasca-c266e7.netlify.app/</a>
+</p>
 
-Currently, two official plugins are available:
+<h2>🚀 Tech Stack</h2>
+<hr />
+<ul>
+  <li><strong>Frontend:</strong> React, CSS</li>
+  <li><strong>Routing:</strong> React Router DOM</li>
+  <li><strong>Deployment:</strong> Netlify</li>
+  <li><strong>Testing:</strong> Thunder Client </li>
+</ul>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<h2>📦 Dependencies</h2>
+<hr />
+<ul>
+  <li><code>react-router-dom</code> – for routing between pages</li>
+  <li><code>axios</code> – to make HTTP requests</li>
+  <li><code>cors</code> – to allow cross-origin resource sharing</li>
+  <li><code>jsonwebtoken</code> – for managing authentication tokens</li>
+  <li><
