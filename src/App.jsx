@@ -8,6 +8,8 @@ import axiosInstance from './Axios'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
 import Login from './pages/Login'
+import AskQuestion from './Components/AskQuestion/AskQuestion'
+
 
 export const AppStates = createContext()
 function App() {
@@ -42,7 +44,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path='/howitworks' element={<Howitworks />} />
             <Route path="/home" element={<UserLogedIn />} />
-            <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/AskQuestion" element={< AskQuestion/>} />
         </Routes>
         <Footer />
     </AppStates.Provider>
