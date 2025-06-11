@@ -4,7 +4,7 @@ function UserLogedIn() {
   return (
     <div className={classes.homeContainer}>
       <div className={classes.welcome}>
-      <Link to="/questions" className={classes.askbtn}>Ask Question</Link>
+      <Link to="/Askquestion" className={classes.askbtn}>Ask Question</Link>
       <p>welcome: User</p>
       </div>
       <section>
