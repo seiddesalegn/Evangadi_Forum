@@ -8,7 +8,7 @@
 
 <p>
   🔗 <strong>Live Demo:</strong>
-  <a href="https://incredible-pasca-c266e7.netlify.app/" target="_blank">https://incredible-pasca-c266e7.netlify.app/</a>
+  <a href="https://grptwoforum.netlify.app" target="_blank">https://incredible-pasca-c266e7.netlify.app/</a>
 </p>
 
 <h2>🚀 Tech Stack</h2>
