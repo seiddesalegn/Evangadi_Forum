@@ -25,7 +25,7 @@ function Login() {
         email: emailValue,
         password: passwordValue,
       });
-      alert("Login successful!");
+      
       navigate("/home");
       localStorage.setItem("token : ", data.token);
       localStorage.setItem("username : ", data.username);
