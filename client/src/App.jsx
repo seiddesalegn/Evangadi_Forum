@@ -18,7 +18,7 @@ function App() {
   const navigate = useNavigate();
   async function checkUser() {
     try {
-      const { data } = await axiosInstance.get("/users/check", {
+      const { data } = await axiosInstance.get("/user/check", {
         headers: {
           Authorization: "Bearer " + token,
         },
