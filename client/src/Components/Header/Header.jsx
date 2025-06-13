@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
-import classes from './Header.module.css';
-import logo from '../../../public/logo.png';
-import { Link } from 'react-router-dom';
+import { useState, useContext } from "react";
+import classes from "./Header.module.css";
+import logo from "../../../public/logo.png";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
 
 function Header() {
+  const { user, setUser } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  };
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -22,7 +30,9 @@ function Header() {
           </button>
         </div>
 
-        <div className={`${classes.navbar} ${isMenuOpen ? classes.active : ''}`}>
+        <div
+          className={`${classes.navbar} ${isMenuOpen ? classes.active : ""}`}
+        >
           <ul className={classes.navbarList}>
             <div className={classes.homeAndHowitwork}>
               <Link to="/login" onClick={toggleMenu}>
@@ -32,9 +42,18 @@ function Header() {
                 <li>How it works</li>
               </Link>
             </div>
-            <Link to="/login" onClick={toggleMenu}>
-              <li className={classes.signup}>Sign In</li>
-            </Link>
+
+            {user ? (
+              <Link to="/login" onClick={toggleMenu}>
+                <li className={classes.signup} onClick={handleLogout}>
+                  Log Out
+                </li>
+              </Link>
+            ) : (
+              <Link to="/login" onClick={toggleMenu}>
+                <li className={classes.signup}>Sign In</li>
+              </Link>
+            )}
           </ul>
         </div>
       </div>

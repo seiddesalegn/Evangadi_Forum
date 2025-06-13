@@ -2,9 +2,9 @@ import React, { useRef } from "react";
 import axiosInstance from "../Axios";
 import { Link, useNavigate } from "react-router-dom";
 import style from "./login.module.css";
-
 import About from "./About";
 import { useState } from "react";
+
 function Login() {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
@@ -15,22 +15,14 @@ function Login() {
     event.preventDefault();
     const emailValue = email.current.value;
     const passwordValue = password.current.value;
-    // You can add validation here if needed
-    // if ( !emailValue || !passwordValue) {
-    //     alert("Please fill in all fields.");
-    //     return;
-    // }
+
     try {
       const { data } = await axiosInstance.post("/user/login", {
         email: emailValue,
         password: passwordValue,
       });
-      alert("Login successful!");
+      localStorage.setItem("token", data.token);
       navigate("/home");
-      localStorage.setItem("token : ", data.token);
-      localStorage.setItem("username : ", data.username);
-      const username = data.username;
-      console.log(username);
     } catch (error) {
       console.error("Error during registration:", error);
       setError(true);
