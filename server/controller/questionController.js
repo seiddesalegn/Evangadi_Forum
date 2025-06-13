@@ -8,6 +8,7 @@ async function getQuestions(req, res) {
     const [rows] = await db.query(
       "SELECT * FROM questions ORDER BY created_at DESC"
     );
+    console.log("✅ Questions fetched:", rows);
 
     if (rows.length === 0) {
       return res.status(StatusCodes.NOT_FOUND).json({

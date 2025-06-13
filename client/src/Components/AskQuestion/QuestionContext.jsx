@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../../Axios";
 
 export const QuestionContext = createContext();
 
@@ -9,14 +9,11 @@ export function QuestionProvider({ children }) {
   const fetchQuestions = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(
-        "http://localhost:5500/api/question/all-questions",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axiosInstance.get("/question/all-questions", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setQuestions(res.data.questions);
     } catch (err) {
       console.error("Failed to fetch questions", err);

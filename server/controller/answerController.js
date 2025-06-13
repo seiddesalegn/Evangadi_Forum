@@ -15,13 +15,6 @@ const getAnswersByQuestionId = async (req, res) => {
       [question_id]
     );
 
-    if (answers.length === 0) {
-      return res.status(StatusCodes.NOT_FOUND).json({
-        error: "Not Found",
-        message: "No answers found for this question.",
-      });
-    }
-
     return res.status(StatusCodes.OK).json({ answers });
   } catch (error) {
     console.error(error);
@@ -50,9 +43,16 @@ const postAnswer = async (req, res) => {
       [questionid, userid, answer]
     );
 
-    return res.status(StatusCodes.CREATED).json({
-      message: "Answer posted successfully",
-    });
+    const [[newAnswer]] = await db.query(
+      `SELECT a.answerid, a.answer, u.username AS user_name, a.created_at
+       FROM answers a
+       JOIN users u ON a.userid = u.userid
+       WHERE a.questionid = ? AND a.userid = ?
+       ORDER BY a.created_at DESC LIMIT 1`,
+      [questionid, userid]
+    );
+
+    return res.status(StatusCodes.CREATED).json(newAnswer);
   } catch (error) {
     console.error(error);
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -63,4 +63,3 @@ const postAnswer = async (req, res) => {
 };
 
 module.exports = { getAnswersByQuestionId, postAnswer };
-

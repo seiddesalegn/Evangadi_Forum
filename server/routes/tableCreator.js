@@ -18,7 +18,7 @@ router.get("/create-table", async (req, res) => {
     const questions = `
       CREATE TABLE IF NOT EXISTS questions (
         id INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        questionid VARCHAR(100) NOT NULL UNIQUE,
+        questionid VARCHAR(100) NOT NULL,
         userid INT(20) NOT NULL,
         title VARCHAR(50) NOT NULL,
         description VARCHAR(200) NOT NULL,
@@ -27,18 +27,18 @@ router.get("/create-table", async (req, res) => {
         FOREIGN KEY(userid) REFERENCES users(userid)
       );
     `;
-
     const answers = `
-      CREATE TABLE IF NOT EXISTS answers (
-        answerid INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        userid INT(20) NOT NULL,
-        questionid VARCHAR(100) NOT NULL,
-        answer VARCHAR(200) NOT NULL,
-        FOREIGN KEY(userid) REFERENCES users(userid),
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY(questionid) REFERENCES questions(questionid)
-      );
-    `;
+    CREATE TABLE IF NOT EXISTS answers (
+      answerid INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      userid INT(20) NOT NULL,
+      questionid VARCHAR(100) NOT NULL,
+      answer VARCHAR(200) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY(userid) REFERENCES users(userid),
+      FOREIGN KEY(questionid) REFERENCES questions(questionid)
+    );
+  `;
+  
 
     await db.query(users);
     await db.query(questions);

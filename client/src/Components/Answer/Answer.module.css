@@ -1,0 +1,136 @@
+.page {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+    font-family: 'Segoe UI', sans-serif;
+    color: #222;
+  }
+  
+  .questionSection {
+    background-color: #f0f8ff;
+    border-left: 6px solid #de6d2b;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+  }
+  
+  .ribbon {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #db773d;
+    margin-bottom: 0.5rem;
+  }
+  
+  .meta {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .category {
+    background-color: #e0f7fa;
+    color: #00796b;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+    display: inline-block;
+    width: fit-content;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .body {
+    margin-top: 0.5rem;
+    line-height: 1.6;
+  }
+  
+  .backButton {
+    background-color: transparent;
+    border: none;
+    color: #e2772a;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-decoration: underline;
+  }
+  
+  .answersSection {
+    margin-top: 2rem;
+  }
+  
+  .answersList {
+    margin-top: 1rem;
+  }
+  
+  .answerCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .answerContent {
+    flex-grow: 1;
+  }
+  
+  .avatar {
+    background-color: #d16624 !important;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .postForm {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    min-height: 100px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+  
+  .askbtn {
+    background-color: #de864c;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+  }
+  
+  .askbtn:hover {
+    background-color: #005f99;
+  }
+  
+  .error {
+    color: #c62828;
+    font-weight: 500;
+    margin-top: -0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .success {
+    color: #2e7d32;
+    font-weight: 500;
+    margin-top: -0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  

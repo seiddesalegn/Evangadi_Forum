@@ -7,7 +7,7 @@ import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import Login from "./pages/Login";
 import AskQuestion from "./Components/AskQuestion/AskQuestion";
-import Answere from "./Components/Answere/Answere";
+import Answer from "./Components/Answer/Answer";
 import ProtectedRoute from "./Components/ProtectedRoute";
 
 export const AppStates = createContext();
@@ -37,10 +37,10 @@ function App() {
           }
         />
         <Route
-          path="/answeres"
+          path="/answers/:questionId"
           element={
             <ProtectedRoute>
-              <Answere />
+              <Answer />
             </ProtectedRoute>
           }
         />

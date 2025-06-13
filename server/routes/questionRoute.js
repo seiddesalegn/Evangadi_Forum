@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const authMiddleware = require("../middleware/authMiddleware");
+
 
 // question controllers import
 
@@ -12,6 +14,6 @@ const {
 // get questions route
 router.get("/all-questions", getQuestions);
 router.get("/:question_id", getSingleQuestion);
-router.post("/", postQuestion);
+router.post("/", authMiddleware, postQuestion);
 
 module.exports = router;

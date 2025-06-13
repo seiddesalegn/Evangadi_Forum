@@ -36,10 +36,9 @@ function UserLogedIn() {
       <section>
         <h3>Questions from the Community</h3>
         <hr />
-
         {questions && questions.length > 0 ? (
           questions.map((q) => (
-            <Link to={`/answeres/${q.questionid}`} key={q.questionid}>
+            <Link to={`/answers/${q.questionid}`} key={q.questionid}>
               <div className={classes.askpara}>
                 <p>{q.title}</p>
                 <button> &#62; </button>
