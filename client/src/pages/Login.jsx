@@ -1,12 +1,11 @@
 
-import React, { useState } from "react";
+import { useState } from "react";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import axiosInstance from "../Axios";
 import { Link, useNavigate } from "react-router-dom";
 import style from "./login.module.css";
 import About from "./About";
-import { useState } from "react";
 
 function Login() {
   const [error, setError] = useState(false);
@@ -15,8 +14,6 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const email = useRef(null);
-  const password = useRef(null);
   async function handleSubmit(event) {
     event.preventDefault();
 
