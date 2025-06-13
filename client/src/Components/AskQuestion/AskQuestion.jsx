@@ -27,13 +27,11 @@ function AskQuestion() {
         }
       );
 
-      alert("Your question was posted!");
       setTitle("");
       setDetail("");
       navigate("/");
     } catch (err) {
       console.error("Error posting question:", err);
-      alert("Failed to post question");
     }
   };
 
