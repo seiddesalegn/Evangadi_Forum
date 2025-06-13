@@ -1,11 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./Home.module.css";
-import { AuthContext } from "../AuthContext";
+// import { AuthContext } from "../AuthContext";
 import { QuestionContext } from "../AskQuestion/QuestionContext";
+import { jwtDecode } from "jwt-decode";
 
 function UserLogedIn() {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token && typeof token === "string") {
+      try {
+        const decoded = jwtDecode(token);
+
+        setUser(decoded);
+      } catch (error) {
+        console.error("Invalid token:", error.message);
+        localStorage.removeItem("token");
+      }
+    }
+  }, []);
   const { questions } = useContext(QuestionContext);
 
   return (

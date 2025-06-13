@@ -1,11 +1,26 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import classes from "./Header.module.css";
 import logo from "../../../public/logo.png";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthContext";
+import { jwtDecode } from "jwt-decode";
 
 function Header() {
-  const { user, setUser } = useContext(AuthContext);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token && typeof token === "string") {
+      try {
+        const decoded = jwtDecode(token);
+
+        setUser(decoded);
+      } catch (error) {
+        console.error("Invalid token:", error.message);
+        localStorage.removeItem("token");
+      }
+    }
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
