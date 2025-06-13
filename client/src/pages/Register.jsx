@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import axiosInstance from "../Axios";
 import style from "./login.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import About from "./About";
 import { useState } from "react";
 function Register() {
@@ -13,6 +15,7 @@ function Register() {
   const navigate = useNavigate();
   const [field, setField] = useState(false);
   const [error, setError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); 
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -22,7 +25,6 @@ function Register() {
     const lastnameValue = lastname.current.value;
     const emailValue = email.current.value;
 
-    // You can add validation here if needed
     if (
       !userValue ||
       !firstnameValue ||
@@ -42,8 +44,7 @@ function Register() {
         email: emailValue,
         password: passwordValue,
       });
-      alert("Registration successful!");
-      navigate("/login"); // Redirect to login page after successful registration
+      navigate("/login");
     } catch (error) {
       console.log(error);
 
@@ -52,9 +53,61 @@ function Register() {
   }
 
   return (
-    <section className={style.wrapper}>
+   <section className={style.wrapper}>
       <div className={style.login}>
         <div>
+          <h2>Join the Community</h2>
+          <span>
+            Already have account? <Link to={"/login"}>login</Link>
+          </span>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="username">username</label>
+            <input type="text" ref={username} placeholder="Enter username" id="username" name="username" />
+          </div>
+          <br />
+          <div>
+            <label htmlFor="firstname">First Name</label>
+            <input
+              type="text"
+              ref={firstname}
+              placeholder="Enter firstname"
+              id="firstname"
+              name="firstname"
+            />
+          </div>
+          <br />
+          <div>
+            <label htmlFor="lastname">lastname</label>
+            <input type="text" ref={lastname} placeholder="Enter lastname" id="lastname" name="lastname" />
+          </div>
+          <br />
+          <div>
+            <label htmlFor="email">Email</label>
+            <input type="email" ref={email} placeholder="Enter email" id="email" name="email" />
+          </div>
+          <br />
+          <div style={{ position: "relative" }}>
+            <label htmlFor="password">Password</label>
+            <input
+              type={showPassword ? "text" : "password"} 
+              ref={password}
+              id="password"
+              placeholder="Enter password"
+              name="password"
+              style={{ paddingRight: "10px" }}
+            />
+            <span
+              onClick={() => setShowPassword(!showPassword)} >
+              {showPassword ? (<VisibilityIcon />) : (<VisibilityOffIcon />)}
+            </span>
+          </div>
+          
+          <br />
+          <button type="submit">Agree And Join</button>
+        </form>
+        
           {field && (
             <span style={{ color: "red" }}>Please fill in all fields.</span>
           )}
@@ -63,49 +116,6 @@ function Register() {
               Error ocurred during registration: or User exist
             </span>
           )}
-          <h2>Join the Community</h2>
-          <span>
-            Already have account?
-            <Link to={"/login"}>login</Link>
-          </span>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="username">username</label>
-            <input type="text" ref={username} id="username" name="username" />
-          </div>
-          <br />
-          <div>
-            <label htmlFor="firstname">First Name</label>
-            <input
-              type="text"
-              ref={firstname}
-              id="firstname"
-              name="firstname"
-            />
-          </div>
-          <br />
-          <div>
-            <label htmlFor="lastname">lastname Name</label>
-            <input type="text" ref={lastname} id="lastname" name="lastname" />
-          </div>
-          <br />
-          <div>
-            <label htmlFor="email">Email</label>
-            <input type="email" ref={email} id="email" name="email" />
-          </div>
-          <br />
-          <div>
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              ref={password}
-              id="password"
-              name="password"
-            />
-          </div>
-          <button type="submit">Create Account</button>
-        </form>
       </div>
       <About />
     </section>
