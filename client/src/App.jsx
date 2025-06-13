@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import AskQuestion from "./Components/AskQuestion/AskQuestion";
 import Answer from "./Components/Answer/Answer";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import "./index.css";
 
 export const AppStates = createContext();
 function App() {
