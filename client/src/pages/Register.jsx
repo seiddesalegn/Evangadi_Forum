@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import About from "./About";
-import { useState } from "react";
 function Register() {
   const username = useRef(null);
   const firstname = useRef(null);
