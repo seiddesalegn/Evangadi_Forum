@@ -23,7 +23,7 @@ function Login() {
       });
 
       localStorage.setItem("token", data.token);
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       console.error("Error during registration:", error);
       setError(true);
