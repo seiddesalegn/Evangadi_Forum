@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./Home.module.css";
-// import { AuthContext } from "../AuthContext";
 import { QuestionContext } from "../AskQuestion/QuestionContext";
 import { jwtDecode } from "jwt-decode";
 
 function UserLogedIn() {
-  // const { user } = useContext(AuthContext);
-
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
+  const { questions } = useContext(QuestionContext);
+  console.log(questions);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -24,7 +23,6 @@ function UserLogedIn() {
       }
     }
   }, []);
-  const { questions } = useContext(QuestionContext);
 
   return (
     <div className={classes.homeContainer}>

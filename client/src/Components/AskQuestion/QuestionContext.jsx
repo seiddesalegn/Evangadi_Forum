@@ -4,7 +4,7 @@ import axios from "axios";
 export const QuestionContext = createContext();
 
 export function QuestionProvider({ children }) {
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState(null);
 
   const fetchQuestions = async () => {
     try {
@@ -17,7 +17,7 @@ export function QuestionProvider({ children }) {
           },
         }
       );
-      setQuestions(res.data);
+      setQuestions(res.data.questions);
     } catch (err) {
       console.error("Failed to fetch questions", err);
     }
