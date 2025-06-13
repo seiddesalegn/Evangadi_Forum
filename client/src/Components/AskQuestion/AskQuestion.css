@@ -1,32 +1,33 @@
-.ask-container {
-  padding: 2rem 1rem;
+ .ask-container {
+  /* padding: 2rem 1rem;
   display: flex;
   justify-content: center;
   background-color: #f9f9f9;
-  min-height: 100vh;
+  min-height: 100vh; */
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  background-color: #f9f9f9;
 }
 
 .ask-wrapper {
-  width: 100%;
+  width: 90%;
   max-width: 700px;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 6px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0 auto;
+  font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
 }
 
 .ask-title {
   font-size: 1.4rem;
-  font-weight: 600;
-  /* border-bottom: 2px solid #e64445;
-  padding-bottom: 0.5rem; */
+  font-weight: 600; 
   margin-bottom: 1.2rem;
-  color: #333;
-}
+  color: black;
+ }
 
 .ask-title span {
-  color: #e64445;
+  color: black;
   font-weight: 700;
 }
 
@@ -46,7 +47,6 @@
 }
 
 .ask-list li::before {
-  content: " ==>";
   display: inline-block;
   margin-right: 0.5rem;
   font-size: 0.9rem;
@@ -54,26 +54,30 @@
 }
 
 .post-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #222;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .ask-input,
 .ask-textarea {
-  width: 100%;
-  font-size: 1rem;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #aaa;
-  border-radius: 4px;
+  
+  width: 690px;
+  padding: 15px 10px;
+  border: 1px solid #4b4b73;  
+  border-radius: 8px;
+  font-size: 16px;
   outline: none;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  line-height: 1.5;    
+  vertical-align: top;
 }
 
 .ask-input::placeholder,
 .ask-textarea::placeholder {
-  color: #999;
+  color: #4b4949;
 }
 
 .ask-textarea {
@@ -81,6 +85,29 @@
   resize: vertical;
 }
 
+.ask-textarea {
+  width: 690px;        
+  margin: 0 auto;   
+  display: block;     
+  padding: 10px;      
+  font-size: 16px;   
+  border-radius: 7px;
+  height: 150px;      
+  box-sizing: border-box;
+  border-color: #6e6e71;
+  
+}
+
+
+.ask-input,
+.ask-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
 .title-highlight {
   display: inline-block;
   border-bottom: 2px solid orange; /* orange line */
@@ -89,22 +116,33 @@
 }
 
 .ask-button {
-  background-color: #007bff;
   color: white;
   border: none;
-  padding: 0.6rem 1.2rem;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
   transition: 0.2s ease-in-out;
+  text-decoration: none; 
+  background-color: #0472f7; 
+  margin-top: 20px; 
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; 
+
 }
 
 .ask-button:hover {
-  background-color: #0056b3;
+  
+   background-color: #0053c7;
 }
 
 /* Optional: Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .ask-wrapper {
     padding: 1.5rem 1rem;
   }
@@ -114,7 +152,9 @@
   }
 
   .post-title {
-    font-size: 1rem;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
   }
 
   .ask-button {
@@ -126,182 +166,28 @@
 
 
 
-
-
-
-
-
-
-
-
-/* .ask-container {
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-}
-
-.ask-wrapper {
-  max-width: 700px;
-  width: 100%;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.ask-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid red;
-  padding-bottom: 0.5rem;
-}
-
-.ask-title span {
-  color: orange;
- 
-}
-
-.ask-list {
-  margin-bottom: 2rem;
-  padding-left: 1.2rem;
-}
-
-.ask-list li {
-  margin-bottom: 0.8rem;
-  font-size: 0.95rem;
-}
-
-.post-title {
-    justify-content: center;
-  margin: 1.5rem 0 1rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.ask-input,
-.ask-textarea {
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-
-.ask-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.ask-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.ask-button:hover {
-  background-color: #0056b3;
-}  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .ask-container {
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
-}
-
-.steps h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #d9534f;
-  display: inline-block;
-}
-
-.steps ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.steps li {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
-
-.ask-form {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.ask-form h3 {
-  margin-bottom: 1rem;
-}
-
-.ask-form input,
-.ask-form textarea {
-  font-size: 1rem;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.ask-form textarea {
-  height: 150px;
-  resize: vertical;
-}
-
-.ask-form button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 0.75rem;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.ask-form button:hover {
-  background-color: #0056b3;
-} */
-
-/* 🔄 Responsive design */
-/* @media (max-width: 600px) {
-  .ask-container {
-    padding: 1rem;
+@media (max-width: 768px) {
+  .ask-wrapper {
+    width: 95%;
   }
 
-  .steps h2 {
-    font-size: 1.25rem;
+  .ask-button {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ask-wrapper {
+    width: 98%;
   }
 
-  .ask-form input,
-  .ask-form textarea {
-    font-size: 0.9rem;
+  .ask-input,
+  .ask-textarea {
+    padding: 10px 15px;
   }
-} */
+
+  .ask-button {
+    padding: 10px 15px;
+    font-size: 0.95rem;
+  }
+}
