@@ -22,6 +22,12 @@ export function QuestionProvider({ children }) {
 
   useEffect(() => {
     fetchQuestions();
+
+    const interval = setInterval(() => {
+      fetchQuestions();
+    }, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
