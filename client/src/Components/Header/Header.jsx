@@ -37,7 +37,7 @@ function Header() {
     <section className={classes.headerContainer}>
       <div className={classes.wrapper}>
         <div className={classes.logocontainer}>
-          <Link to="/login">
+          <Link to="/">
             <img src={logo} alt="Logo" />
           </Link>
           <button className={classes.navbarbtn} onClick={toggleMenu}>
@@ -50,7 +50,7 @@ function Header() {
         >
           <ul className={classes.navbarList}>
             <div className={classes.homeAndHowitwork}>
-              <Link to="/login" onClick={toggleMenu}>
+              <Link to="/" onClick={toggleMenu}>
                 <li>Home</li>
               </Link>
               <Link to="/howItworks" onClick={toggleMenu}>
@@ -59,13 +59,13 @@ function Header() {
             </div>
 
             {user ? (
-              <Link to="/login" onClick={toggleMenu}>
+              <Link to="/" onClick={toggleMenu}>
                 <li className={classes.signup} onClick={handleLogout}>
                   Log Out
                 </li>
               </Link>
             ) : (
-              <Link to="/login" onClick={toggleMenu}>
+              <Link to="/" onClick={toggleMenu}>
                 <li className={classes.signup}>Sign In</li>
               </Link>
             )}
