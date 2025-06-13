@@ -1,17 +1,20 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./AskQuestion.css";
 import axios from "axios";
 
 function AskQuestion() {
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const token = localStorage.getItem("token");
 
     try {
-      const res = await axios.post(
+      await axios.post(
         "http://localhost:5500/api/question",
         {
           title,
@@ -27,6 +30,7 @@ function AskQuestion() {
       alert("Your question was posted!");
       setTitle("");
       setDetail("");
+      navigate("/");
     } catch (err) {
       console.error("Error posting question:", err);
       alert("Failed to post question");
