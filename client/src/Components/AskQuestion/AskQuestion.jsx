@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AskQuestion.css";
-import axios from "axios";
+import axiosInstance from "../../Axios";
 
 function AskQuestion() {
   const [title, setTitle] = useState("");
@@ -14,8 +14,8 @@ function AskQuestion() {
     const token = localStorage.getItem("token");
 
     try {
-      await axios.post(
-        "http://localhost:5500/api/question",
+      await axiosInstance.post(
+        "question",
         {
           title,
           description: detail,
