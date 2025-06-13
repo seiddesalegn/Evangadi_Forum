@@ -21,7 +21,7 @@ function Login() {
         email: emailValue,
         password: passwordValue,
       });
-      localStorage.setItem("token", data.token);
+
       navigate("/home");
     } catch (error) {
       console.error("Error during registration:", error);
