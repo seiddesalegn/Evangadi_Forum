@@ -1,9 +1,8 @@
-
 import { useState } from "react";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import axiosInstance from "../Axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "./login.module.css";
 import About from "./About";
 
@@ -12,7 +11,6 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -24,7 +22,7 @@ function Login() {
       });
 
       localStorage.setItem("token", data.token);
-      navigate("/");
+      window.location.href = "/";
     } catch (error) {
       console.error("Error during registration:", error);
       setError(true);
@@ -37,8 +35,7 @@ function Login() {
         <h2>Login to your Account</h2>
         <div>
           <span>
-            Don't have an account?{" "}
-            <Link to={"/register"}>Create Account</Link>
+            Don't have an account? <Link to={"/register"}>Create Account</Link>
           </span>
         </div>
         <form onSubmit={handleSubmit} className={style.loginform}>
@@ -67,9 +64,8 @@ function Login() {
               required
               style={{ paddingRight: "10px" }}
             />
-            <span
-              onClick={() => setShowPassword((prev) => !prev)}>
-              {showPassword ? (<VisibilityIcon />) : (<VisibilityOffIcon />)}
+            <span onClick={() => setShowPassword((prev) => !prev)}>
+              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </span>
           </div>
           <br />

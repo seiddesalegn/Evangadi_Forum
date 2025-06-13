@@ -25,6 +25,7 @@ function Header() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setUser(null);
+    window.location.href = "/";
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
