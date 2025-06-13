@@ -4,7 +4,7 @@ import classes from "./Home.module.css";
 import { QuestionContext } from "../AskQuestion/QuestionContext";
 import { jwtDecode } from "jwt-decode";
 
-function UserLogedIn() {
+function Home() {
   const [user, setUser] = useState([]);
   const { questions } = useContext(QuestionContext);
   console.log(questions);
@@ -53,4 +53,4 @@ function UserLogedIn() {
   );
 }
 
-export default UserLogedIn;
+export default Home;

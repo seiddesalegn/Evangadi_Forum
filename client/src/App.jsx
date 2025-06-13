@@ -2,8 +2,8 @@ import { createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Howitworks from "./Components/HowItWorks/HowItWorks";
-import UserLogedIn from "./Components/Home/UserLogedIn";
 import Header from "./Components/Header/Header";
+import Home from "./Components/Home/Hom";
 import Footer from "./Components/Footer/Footer";
 import Login from "./pages/Login";
 import AskQuestion from "./Components/AskQuestion/AskQuestion";
@@ -24,7 +24,7 @@ function App() {
           path="/"
           element={
             <ProtectedRoute>
-              <UserLogedIn />
+              <Home />
             </ProtectedRoute>
           }
         />
