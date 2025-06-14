@@ -2,13 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./Home.module.css";
 import { QuestionContext } from "../AskQuestion/QuestionContext";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 import { jwtDecode } from "jwt-decode";
-import PersonIcon from "@mui/icons-material/Person";
 
 function Home() {
   const [user, setUser] = useState([]);
   const { questions } = useContext(QuestionContext);
-  console.log(questions);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -16,7 +16,6 @@ function Home() {
     if (token && typeof token === "string") {
       try {
         const decoded = jwtDecode(token);
-
         setUser(decoded);
       } catch (error) {
         console.error("Invalid token:", error.message);
@@ -31,7 +30,7 @@ function Home() {
         <Link to="/Askquestion" className={classes.askbtn}>
           Ask Question
         </Link>
-        <p>Welcome {user?.username}</p>
+        <p>Welcome: {user?.username || "Guest"}</p>
       </div>
 
       <section>
@@ -42,11 +41,13 @@ function Home() {
             <Link to={`/answers/${q.questionid}`} key={q.questionid}>
               <div className={classes.askpara}>
                 <div className={classes.userBlock}>
-                  <div className={classes.userRow}>
-                    <PersonIcon />
-                    <span className={classes.user}>{q.username}</span>
+                  <div className={classes.avatarSection}>
+                    <AccountCircleIcon className={classes.avatarIcon} />
+                    <div className={classes.askerName}>{q.username}</div>
                   </div>
-                  <span className={classes.title}>{q.title}</span>
+                  <div className={classes.questionContent}>
+                    <div className={classes.questionTitle}>{q.title}</div>
+                  </div>
                 </div>
                 <button>&#62;</button>
               </div>
