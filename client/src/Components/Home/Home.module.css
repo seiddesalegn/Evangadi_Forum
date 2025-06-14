@@ -59,3 +59,31 @@
   text-decoration: none;
   color: #000;
 }
+
+.askpara {
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 12px 30px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.userBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.userRow span:hover {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.title {
+  margin-left: 26px;
+}
