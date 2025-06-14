@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import classes from "./Header.module.css";
 import logo from "../../../public/logo.png";
 import { Link } from "react-router-dom";
@@ -61,7 +61,7 @@ function Header() {
 
             {user ? (
               <Link to="/" onClick={toggleMenu}>
-                <li className={classes.signup} onClick={handleLogout}>
+                <li className={classes.signout} onClick={handleLogout}>
                   Log Out
                 </li>
               </Link>

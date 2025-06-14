@@ -36,6 +36,10 @@
   line-height: 30px;
   color: #000;
 }
+.signout{
+  background: #fff;
+  color: red;
+}
 
 .navbar {
   display: flex;

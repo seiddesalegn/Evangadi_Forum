@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import classes from "./Home.module.css";
 import { QuestionContext } from "../AskQuestion/QuestionContext";
 import { jwtDecode } from "jwt-decode";
+import PersonIcon from '@mui/icons-material/Person';
 
 function Home() {
   const [user, setUser] = useState([]);
@@ -40,7 +41,7 @@ function Home() {
           questions.map((q) => (
             <Link to={`/answers/${q.questionid}`} key={q.questionid}>
               <div className={classes.askpara}>
-                <p>{q.title}</p>
+                <p> <PersonIcon />  {q.title}</p>
                 <button> &#62; </button>
               </div>
             </Link>
