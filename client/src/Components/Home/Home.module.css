@@ -1,10 +1,9 @@
- .homeContainer {
+.homeContainer {
   max-width: 800px;
   margin: 0 auto;
   padding: 32px;
   font-family: Arial, sans-serif;
   border-radius: 12px;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
 .welcome {
@@ -14,18 +13,15 @@
   margin-bottom: 32px;
 }
 
-.homeContainer section a {
-  text-decoration: none;
-}
-
-.wrapQuestion {
-  margin: 4px 0;
+.usernameRed {
+  color: red;
+  font-weight: bold;
 }
 
 .askbtn {
   background-color: #007bff;
   color: white;
-  padding: 4px 7px;
+  padding: 6px 12px;
   border: none;
   border-radius: 8px;
   text-decoration: none;
@@ -36,77 +32,78 @@
 .askbtn:hover {
   background-color: #0056b3;
 }
-.homeContainer .askpara {
-  padding: 12px 0;
+
+.askpara {
   display: flex;
   justify-content: space-between;
-  margin: 0 0 12px 30px;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-}
-.homeContainer .askpara button {
-  margin-right: 24px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background: #fff;
-  font-size: 24px;
-}
-.askpara p {
-  font-size: 22px;
-}
-.homeContainer h3 {
-  color: #2d385e;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: #2d385e;
-}
-.homeContainer a {
+  align-items: center;
+  background-color: white;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease;
   text-decoration: none;
-  color: #000;
+  color: #333;
 }
 
-.askpara button {
-  background: none;
-  border: none;
-  font-size: 18px;
-  color: #007bff;
-  cursor: pointer;
+.askpara:hover {
+  background-color: #f0f0f0;
 }
 
-.userBox {
+.userBlock {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 50px;
 }
 
 .avatarSection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 60px;
+  width: 80px;
+}
+
+.avatarCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid gray ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
 }
 
-
+.avatarIcon {
+  color: black;
+  font-size: 40px;
+}
 
 .askerName {
-  font-size: 12px;
-  color: #444;
-  margin-top: 2px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: bold;
+  font-weight: 600;
   text-align: center;
+  word-break: break-word;
 }
 
 .questionContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex: 1;
 }
 
 .questionTitle {
   font-size: 16px;
-  font-weight: bold;
-  color: #222;
+  font-weight: 600;
+  color: bold;
 }
 
+button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: black;
+  cursor: pointer;
+}
