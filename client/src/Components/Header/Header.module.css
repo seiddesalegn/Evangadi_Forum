@@ -2,7 +2,6 @@
   position: sticky;
   top: 0;
   background-color: #fff;
-  margin-bottom: 15px;
   box-shadow: 0 2px 5px #0000001a;
 }
 
@@ -36,7 +35,7 @@
   line-height: 30px;
   color: #000;
 }
-.signout{
+.signout {
   background: #fff;
   color: red;
 }
@@ -118,7 +117,7 @@
     display: block;
     margin-right: 24px;
   }
-  .logocontainer img{
+  .logocontainer img {
     margin-left: 36px;
   }
 
