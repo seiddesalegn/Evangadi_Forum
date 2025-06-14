@@ -37,24 +37,21 @@ function Home() {
       <section>
         <h3>Questions from the Community</h3>
         <hr />
+       <div className={classes.wrapQuestion}> 
         {questions && questions.length > 0 ? (
           questions.map((q) => (
-            <Link to={`/answers/${q.questionid}`} key={q.questionid}>
+            <Link to={/answers/${q.questionid}} key={q.questionid}>
               <div className={classes.askpara}>
-                <div className={classes.userBlock}>
-                  <div className={classes.userRow}>
-                    <PersonIcon />
-                    <span className={classes.user}>{q.username}</span>
-                  </div>
-                  <span className={classes.title}>{q.title}</span>
-                </div>
-                <button>&#62;</button>
+                <p> <PersonIcon />  {q.title}</p>
+                <button> &#62; </button>
               </div>
             </Link>
           ))
         ) : (
           <p>No questions posted yet.</p>
         )}
+
+        </div>
       </section>
     </div>
   );
