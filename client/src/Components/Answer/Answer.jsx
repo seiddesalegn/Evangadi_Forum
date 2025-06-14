@@ -26,7 +26,6 @@ export default function Answer() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log("✅ Question fetched:", res.data);
         setQuestion(res.data.question);
       })
       .catch((err) => {
@@ -45,7 +44,6 @@ export default function Answer() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log("✅ Answers fetched:", res.data.answers);
         setAnswers(res.data.answers);
       })
       .catch((err) => {

@@ -9,7 +9,6 @@ export function QuestionProvider({ children }) {
   const fetchQuestions = async () => {
     try {
       const token = localStorage.getItem("token");
-      console.log("Token being sent:", token); // Add this
 
       const res = await axiosInstance.get("/question/all-questions", {
         headers: {

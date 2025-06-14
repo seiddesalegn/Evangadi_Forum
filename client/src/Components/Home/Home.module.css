@@ -36,23 +36,35 @@
 .askbtn:hover {
   background-color: #0056b3;
 }
-
-.askpara {
+.homeContainer .askpara {
+  padding: 12px 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  padding: 16px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-  border: 1px solid #ddd;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
-  color: #333;
+  margin: 0 0 12px 30px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
 }
-
-.askpara:hover {
-  background-color: #f0f0f0;
+.homeContainer .askpara button {
+  margin-right: 24px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: #fff;
+  font-size: 24px;
+}
+.askpara p {
+  font-size: 22px;
+}
+.homeContainer h3 {
+  color: #2d385e;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #2d385e;
+}
+.homeContainer a {
+  text-decoration: none;
+  color: #000;
 }
 
 .askpara button {
@@ -63,7 +75,7 @@
   cursor: pointer;
 }
 
-.userBlock {
+.userBox {
   display: flex;
   align-items: center;
   gap: 16px;

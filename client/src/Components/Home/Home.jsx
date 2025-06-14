@@ -7,7 +7,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { jwtDecode } from "jwt-decode";
 
 function Home() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
   const { questions } = useContext(QuestionContext);
 
   useEffect(() => {
@@ -30,12 +30,17 @@ function Home() {
         <Link to="/Askquestion" className={classes.askbtn}>
           Ask Question
         </Link>
+<<<<<<< HEAD
         <p>Welcome: {user?.username || "Guest"}</p>
+=======
+        <p>Welcome {user?.username || "Guest"}</p>
+>>>>>>> 85f4d2c48e6b5e41604a0fd9ada9f29967cdad01
       </div>
 
       <section>
         <h3>Questions from the Community</h3>
         <hr />
+<<<<<<< HEAD
         {questions && questions.length > 0 ? (
           questions.map((q) => (
             <Link to={`/answers/${q.questionid}`} key={q.questionid}>
@@ -48,14 +53,28 @@ function Home() {
                   <div className={classes.questionContent}>
                     <div className={classes.questionTitle}>{q.title}</div>
                   </div>
+=======
+        <div className={classes.wrapQuestion}>
+          {questions && questions.length > 0 ? (
+            questions.map((q) => (
+              <Link to={`/answers/${q.questionid}`} key={q.questionid}>
+                <div className={classes.askpara}>
+                  <div className={classes.userBox}>
+                    <PersonIcon />
+                    <p className={classes.username}>
+                      {q.username || "Unknown"}
+                    </p>
+                  </div>
+                  <span className={classes.questionTitle}>{q.title}</span>
+                  <button> &#62; </button>
+>>>>>>> 85f4d2c48e6b5e41604a0fd9ada9f29967cdad01
                 </div>
-                <button>&#62;</button>
-              </div>
-            </Link>
-          ))
-        ) : (
-          <p>No questions posted yet.</p>
-        )}
+              </Link>
+            ))
+          ) : (
+            <p>No questions posted yet.</p>
+          )}
+        </div>
       </section>
     </div>
   );
