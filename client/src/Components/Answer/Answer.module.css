@@ -2,7 +2,7 @@
   padding: 2rem;
   max-width: 800px;
   margin: auto;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   color: #222;
 }
 
@@ -108,7 +108,12 @@
 .answerContent {
   flex: 1;
 }
-
+.answerContent p {
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap; /* keeps line breaks */
+  overflow-wrap: break-word;
+}
 .postForm {
   margin-top: 2rem;
   width: 100%;

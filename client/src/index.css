@@ -3,6 +3,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
 }
 
@@ -16,7 +17,6 @@
 .main-content {
   flex: 1;
   padding: 20px 0;
-  /* optional padding */
 }
 a {
   text-decoration: none;

@@ -20,6 +20,7 @@ export default function Answer() {
   // Fetch question
   useEffect(() => {
     if (!token) return;
+
     axiosInstance
       .get(`/question/${questionId}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -28,7 +29,7 @@ export default function Answer() {
         setQuestion(res.data.question);
       })
       .catch((err) => {
-        console.error("Error fetching question:", err.message);
+        console.error("❌ Error fetching question:", err.message);
         setQuestion(null);
       })
       .finally(() => setLoading(false));
@@ -37,6 +38,7 @@ export default function Answer() {
   // Fetch answers
   useEffect(() => {
     if (!token) return;
+
     axiosInstance
       .get(`/answer/${questionId}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -45,7 +47,7 @@ export default function Answer() {
         setAnswers(res.data.answers);
       })
       .catch((err) => {
-        console.error("Error fetching answers:", err.message);
+        console.error("❌ Error fetching answers:", err.message);
         setAnswers([]);
       });
   }, [questionId]);
@@ -64,7 +66,11 @@ export default function Answer() {
       await axiosInstance.post(
         "/answer",
         { questionid: questionId, answer: newAnswer },
-        { headers: { Authorization: `Bearer ${token}` } }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       setAnswers((prev) => [
@@ -90,27 +96,20 @@ export default function Answer() {
 
   return (
     <div className={classes.page}>
-      {/* QUESTION SECTION */}
+      {/* QUESTION */}
       <section className={classes.questionSection}>
         <h2 className={classes.ribbon}>QUESTION</h2>
-
-        {question.tag && (
-          <span className={classes.category}>{question.tag}</span>
-        )}
-
-        <div className={classes.questionMeta}>
-          <span className={classes.iconCircle}>❯</span>
-          <code className={classes.questionTitle}>{question.title}</code>
+        <div className={classes.meta}>
+          <span className={classes.category}>{question.tag || "No Tag"}</span>
+          <code className={classes.subtitle}>{question.title}</code>
         </div>
-
         <p className={classes.body}>{question.description}</p>
-
         <button onClick={() => navigate(-1)} className={classes.backButton}>
           ← Back to Questions
         </button>
       </section>
 
-      {/* ANSWERS SECTION */}
+      {/* ANSWERS */}
       <section className={classes.answersSection}>
         <h3>Answers From The Community</h3>
         <hr />
@@ -120,7 +119,10 @@ export default function Answer() {
           ) : (
             answers.map((ans) => (
               <div key={ans.answerid} className={classes.answerCard}>
-                <Avatar alt={ans.user_name} className={classes.avatar}>
+                <Avatar
+                  alt={ans.user_name || "User"}
+                  className={classes.avatar}
+                >
                   {ans.user_name?.charAt(0)?.toUpperCase() || "?"}
                 </Avatar>
                 <div className={classes.answerContent}>
@@ -143,17 +145,15 @@ export default function Answer() {
             placeholder="Your answer …"
             required
           />
-          <div className={classes.formControls}>
-            {error && <p className={classes.error}>{error}</p>}
-            {success && <p className={classes.success}>{success}</p>}
-            <button
-              type="submit"
-              className={classes.askbtn}
-              disabled={!newAnswer.trim()}
-            >
-              Post Answer
-            </button>
-          </div>
+          {error && <p className={classes.error}>{error}</p>}
+          {success && <p className={classes.success}>{success}</p>}
+          <button
+            type="submit"
+            className={classes.askbtn}
+            disabled={!newAnswer.trim()}
+          >
+            Post Answer
+          </button>
         </form>
       ) : (
         <p className={classes.error}>
@@ -163,4 +163,3 @@ export default function Answer() {
     </div>
   );
 }
-
