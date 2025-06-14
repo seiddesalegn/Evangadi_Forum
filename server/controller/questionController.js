@@ -6,9 +6,11 @@ const { v4: uuidv4 } = require("uuid");
 async function getQuestions(req, res) {
   try {
     const [rows] = await db.query(
-      "SELECT * FROM questions ORDER BY created_at DESC"
+      `SELECT q.*, u.username 
+       FROM questions q 
+       JOIN users u ON q.userid = u.userid 
+       ORDER BY q.created_at DESC`
     );
-    console.log("✅ Questions fetched:", rows);
 
     if (rows.length === 0) {
       return res.status(StatusCodes.NOT_FOUND).json({
