@@ -6,9 +6,8 @@ import { jwtDecode } from "jwt-decode";
 import PersonIcon from "@mui/icons-material/Person";
 
 function Home() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
   const { questions } = useContext(QuestionContext);
-  console.log(questions);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -16,7 +15,6 @@ function Home() {
     if (token && typeof token === "string") {
       try {
         const decoded = jwtDecode(token);
-
         setUser(decoded);
       } catch (error) {
         console.error("Invalid token:", error.message);
@@ -31,27 +29,32 @@ function Home() {
         <Link to="/Askquestion" className={classes.askbtn}>
           Ask Question
         </Link>
-        <p>Welcome {user?.username}</p>
+        <p>Welcome {user?.username || "Guest"}</p>
       </div>
 
       <section>
         <h3>Questions from the Community</h3>
         <hr />
-       <div className={classes.wrapQuestion}> 
-        {questions && questions.length > 0 ? (
-          questions.map((q) => (
-            <Link to={/answers/${q.questionid}} key={q.questionid}>
-              <div className={classes.askpara}>
-                <p> <PersonIcon />  {q.title}</p>
-                <button> &#62; </button>
-              </div>
-            </Link>
-          ))
-        ) : (
-          <p>No questions posted yet.</p>
-        )}
-
-        </div>
+        <div className={classes.wrapQuestion}>
+          {questions && questions.length > 0 ? (
+            questions.map((q) => (
+              <Link to={`/answers/${q.questionid}`} key={q.questionid}>
+                <div className={classes.askpara}>
+                  <div className={classes.userBox}>
+                    <PersonIcon />
+                    <p className={classes.username}>
+                      {q.username || "Unknown"}
+                    </p>
+                  </div>
+                  <span className={classes.questionTitle}>{q.title}</span>
+                  <button> &#62; </button>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <p>No questions posted yet.</p>
+          )}
+        </div>
       </section>
     </div>
   );

@@ -3,6 +3,7 @@
   top: 0;
   background-color: #fff;
   box-shadow: 0 2px 5px #0000001a;
+  z-index: 1000;
 }
 
 .wrapper {
