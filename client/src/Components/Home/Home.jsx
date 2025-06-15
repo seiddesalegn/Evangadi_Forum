@@ -39,7 +39,7 @@ function Home() {
       </div>
 
       <section>
-        <h3>Questions from the Community</h3>
+        <h3 className={classes.community}>Questions from the Community</h3>
         <hr />
         {questions && questions.length > 0 ? (
           questions.map((q) => (

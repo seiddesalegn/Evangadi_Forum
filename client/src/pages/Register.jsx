@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from "react";
 import axiosInstance from "../Axios";
 import style from "./login.module.css";
@@ -11,8 +10,8 @@ function Register() {
   const username = useRef(null);
   const firstname = useRef(null);
   const lastname = useRef(null);
-  const password = useRef(null);
   const email = useRef(null);
+  const password = useRef(null);
   const navigate = useNavigate();
 
   const [field, setField] = useState(false);
@@ -28,7 +27,13 @@ function Register() {
     const emailValue = email.current.value;
     const passwordValue = password.current.value;
 
-    if (!userValue || !firstnameValue || !lastnameValue || !emailValue || !passwordValue) {
+    if (
+      !userValue ||
+      !firstnameValue ||
+      !lastnameValue ||
+      !emailValue ||
+      !passwordValue
+    ) {
       setField(true);
       return;
     }
@@ -51,85 +56,87 @@ function Register() {
   return (
     <section className={style.wrapper}>
       <div className={style.login}>
-        <div>
-          <h2>Join the Network</h2>
-          <span>
-            Already have an account? <Link to="/login">Login</Link>
-          </span>
-        </div>
-
-        <form onSubmit={handleSubmit}>
+        <h2>Join the network</h2>
+        <form onSubmit={handleSubmit} className={style.loginform}>
           <div>
-            <label htmlFor="username">Username</label>
             <input
               type="text"
-              id="username"
-              name="username"
               ref={username}
-              placeholder="Enter username"
+              name="username"
+              placeholder="Username"
+              required
             />
           </div>
 
           <div className={style.nameGroup}>
             <div>
-              <label htmlFor="firstname">First Name</label>
               <input
                 type="text"
-                id="firstname"
-                name="firstname"
                 ref={firstname}
-                placeholder="Enter first name"
+                name="firstname"
+                placeholder="First name"
+                required
               />
             </div>
-
             <div>
-              <label htmlFor="lastname">Last Name</label>
               <input
                 type="text"
-                id="lastname"
-                name="lastname"
                 ref={lastname}
-                placeholder="Enter last name"
+                name="lastname"
+                placeholder="Last name"
+                required
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="email">Email</label>
             <input
               type="email"
-              id="email"
-              name="email"
               ref={email}
-              placeholder="Enter email"
+              name="email"
+              placeholder="Email address"
+              required
             />
           </div>
 
-          <div style={{ position: "relative" }}>
-            <label htmlFor="password">Password</label>
-            <input
-              type={showPassword ? "text" : "password"}
-              id="password"
-              name="password"
-              ref={password}
-              placeholder="Enter password"
-              style={{ paddingRight: "30px" }}
-            />
-            <span
-              onClick={() => setShowPassword(!showPassword)}
-              style={{ position: "absolute", top: "35px", right: "10px", cursor: "pointer" }}
-            >
-              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-            </span>
+          <div className={style.inputWrapper}>
+            <div className={style.inputIconWrapper}>
+              <input
+                type={showPassword ? "text" : "password"}
+                ref={password}
+                name="password"
+                placeholder="Password"
+                className={style.passwordInput}
+                required
+              />
+              <span
+                className={style.icon}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              </span>
+            </div>
           </div>
 
           <div className={style.agreementText}>
             I agree to the{" "}
-            <a href="#" className={style.privacy}>Privacy Policy</a> and{" "}
-            <a href="#" className={style.terms}>Terms of Service</a>
+            <a href="#" className={style.privacy}>
+              privacy policy
+            </a>{" "}
+            and{" "}
+            <a href="#" className={style.terms}>
+              terms of service
+            </a>
+            .
           </div>
 
-          <button type="submit">Agree And Join</button>
+          <button type="submit">Agree and Join</button>
+
+          <div
+            style={{ textAlign: "center", marginTop: "10px", color: "#ff8500" }}
+          >
+            Already have an account? <Link to="/login">Sign in</Link>
+          </div>
         </form>
 
         {field && (
@@ -137,7 +144,7 @@ function Register() {
         )}
         {error && (
           <span style={{ color: "red" }}>
-            Error occurred during registration or user already exists.
+            Registration failed or user already exists.
           </span>
         )}
       </div>

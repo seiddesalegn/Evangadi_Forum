@@ -24,10 +24,11 @@ function Login() {
       localStorage.setItem("token", data.token);
       window.location.href = "/";
     } catch (error) {
-      console.error("Error during registration:", error);
+      console.error("Error during login:", error);
       setError(true);
     }
   }
+
   return (
     <section className={style.wrapper}>
       <div className={style.login}>
@@ -40,35 +41,34 @@ function Login() {
         </div>
         <form onSubmit={handleSubmit} className={style.loginform}>
           <div>
-            <label htmlFor="email">Email</label>
             <input
               type="email"
-              id="email"
-              name="email"
               placeholder="Enter your Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-          <br />
-          <div>
-            <label htmlFor="password">Password</label>
-            <input
-              type={showPassword ? "text" : "password"}
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              style={{ paddingRight: "10px" }}
-            />
-            <span onClick={() => setShowPassword((prev) => !prev)}>
-              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-            </span>
+
+          <div className={style.inputWrapper}>
+            <div className={style.inputIconWrapper}>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className={style.passwordInput}
+              />
+              <span
+                className={style.icon}
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              </span>
+            </div>
           </div>
-          <br />
+
           <button type="submit">Login</button>
         </form>
       </div>
@@ -76,4 +76,5 @@ function Login() {
     </section>
   );
 }
+
 export default Login;

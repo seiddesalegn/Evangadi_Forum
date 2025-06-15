@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import axiosInstance from "../../Axios";
 import classes from "./Answer.module.css";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 
 export default function Answer() {
   const { questionId } = useParams();
@@ -119,12 +121,10 @@ export default function Answer() {
           ) : (
             answers.map((ans) => (
               <div key={ans.answerid} className={classes.answerCard}>
-                <Avatar
-                  alt={ans.user_name || "User"}
-                  className={classes.avatar}
-                >
-                  {ans.user_name?.charAt(0)?.toUpperCase() || "?"}
-                </Avatar>
+                <div className={classes.avatarCircle}>
+                  <AccountCircleIcon className={classes.avatarIcon} />
+                </div>
+
                 <div className={classes.answerContent}>
                   <strong>{ans.user_name || "Unknown user"}</strong>
                   <p>{ans.answer || "No content."}</p>
