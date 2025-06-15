@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AskQuestion.css";
 import axiosInstance from "../../Axios";
+import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
 
 function AskQuestion() {
   const [title, setTitle] = useState("");
