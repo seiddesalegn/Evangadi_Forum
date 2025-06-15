@@ -43,10 +43,10 @@ function AskQuestion() {
           Question.
         </h2>
         <ul className="ask-list">
-          <li> Summarize your problems in a one-line title.</li>
-          <li> Describe your problem in more detail.</li>
-          <li> Describe what you tried and what you expected to happen.</li>
-          <li> Review your question and post it here.</li>
+          <li> <ArrowCircleRightRoundedIcon/> &nbsp; Summarize your problems in a one-line title.</li>
+          <li> <ArrowCircleRightRoundedIcon/> &nbsp; Describe your problem in more detail.</li>
+          <li> <ArrowCircleRightRoundedIcon/> &nbsp; Describe what you tried and what you expected to happen.</li>
+          <li> <ArrowCircleRightRoundedIcon/> &nbsp; Review your question and post it here.</li>
         </ul>
 
         <h3 className="post-title">Post Your Question</h3>
