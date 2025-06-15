@@ -6,10 +6,10 @@ const { v4: uuidv4 } = require("uuid");
 async function getQuestions(req, res) {
   try {
     const [rows] = await db.query(
-      `SELECT q.*, u.username 
-       FROM questions q 
-       JOIN users u ON q.userid = u.userid 
-       ORDER BY q.created_at DESC`
+      `SELECT questions.*, users.username
+        FROM questions
+        JOIN users ON questions.userid = users.userid
+        ORDER BY questions.created_at DESC;`
     );
 
     if (rows.length === 0) {
