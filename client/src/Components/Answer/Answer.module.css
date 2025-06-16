@@ -2,6 +2,7 @@
   padding: 2rem;
   max-width: 85%;
   margin: auto;
+  min-height: 70vh;
   font-family: "Segoe UI", sans-serif;
   color: #222;
 }

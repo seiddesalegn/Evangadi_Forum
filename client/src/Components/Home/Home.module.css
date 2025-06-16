@@ -1,5 +1,6 @@
 .homeContainer {
   max-width: 85%;
+  min-height: 70vh;
   margin: 0 auto;
   padding: 32px;
   font-family: Arial, sans-serif;
