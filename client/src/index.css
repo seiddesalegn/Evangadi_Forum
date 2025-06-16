@@ -6,7 +6,9 @@
   box-sizing: border-box;
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
 }
-
+body{
+  background-color: #f9f9f9;
+}
 /* App.css */
 .app-layout {
   display: flex;

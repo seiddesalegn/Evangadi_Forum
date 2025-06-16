@@ -20,7 +20,7 @@ function Footer() {
         </div> 
         </div>
         <div>
-            <h3>useful Links</h3>
+            <h3>Useful Link</h3>
             <div>
                 <p><Link to="/howItworks">How it works</Link></p>
                 <p><Link to="#">Terms of service</Link></p>

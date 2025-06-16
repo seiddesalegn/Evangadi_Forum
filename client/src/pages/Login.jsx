@@ -33,11 +33,13 @@ function Login() {
     <section className={style.wrapper}>
       <div className={style.login}>
         {error && <span style={{ color: "red" }}>Something went wrong</span>}
-        <h2>Login to your Account</h2>
+        <div style={{textAlign:'center'}}>
+          <h2>Login to your Account</h2>
         <div>
           <span>
-            Don't have an account? <Link to={"/register"}>Create Account</Link>
+            Don't have an account? <Link to={"/register"}>Create a new account</Link>
           </span>
+        </div>
         </div>
         <form onSubmit={handleSubmit} className={style.loginform}>
           <div>
@@ -69,7 +71,7 @@ function Login() {
             </div>
           </div>
           <div className={style.forget}>
-            <Link to="#">forget password?</Link>
+            <Link to="#">Forget password?</Link>
           </div>
 
           <button type="submit" className={style.loginbtn}>Login</button>

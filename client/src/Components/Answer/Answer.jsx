@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import axiosInstance from "../../Axios";
 import classes from "./Answer.module.css";
+import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 
@@ -84,6 +85,7 @@ export default function Answer() {
         },
         ...prev,
       ]);
+      navigate('/')
 
       setNewAnswer("");
       setSuccess("Answer posted successfully!");
@@ -100,15 +102,18 @@ export default function Answer() {
     <div className={classes.page}>
       {/* QUESTION */}
       <section className={classes.questionSection}>
+        <Link to='/'>
         <h2 className={classes.ribbon}>QUESTION</h2>
+      
+        </Link>
         <div className={classes.meta}>
-          <span className={classes.category}>{question.tag || "No Tag"}</span>
+          <span className={classes.arrowIcon}>
+          <ArrowCircleRightRoundedIcon />
+          </span>
           <code className={classes.subtitle}>{question.title}</code>
         </div>
         <p className={classes.body}>{question.description}</p>
-        <button onClick={() => navigate(-1)} className={classes.backButton}>
-          ← Back to Questions
-        </button>
+        
       </section>
 
       {/* ANSWERS */}
@@ -121,12 +126,14 @@ export default function Answer() {
           ) : (
             answers.map((ans) => (
               <div key={ans.answerid} className={classes.answerCard}>
+                <div>
                 <div className={classes.avatarCircle}>
                   <AccountCircleIcon className={classes.avatarIcon} />
                 </div>
+                  <strong>{ans.user_name || "Unknown user"}</strong>
+                  </div>
 
                 <div className={classes.answerContent}>
-                  <strong>{ans.user_name || "Unknown user"}</strong>
                   <p>{ans.answer || "No content."}</p>
                 </div>
               </div>

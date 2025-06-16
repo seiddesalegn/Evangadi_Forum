@@ -30,17 +30,16 @@ function Home() {
         <Link to="/Askquestion" className={classes.askbtn}>
           Ask Question
         </Link>
-        <p>
-          Welcome:{" "}
-          <span className={classes.usernameRed}>
+        <p >
+          Welcome:  <span className={classes.usernameRed}>
             {user?.username || "Guest"}
           </span>
         </p>
       </div>
 
       <section>
-        <h3 className={classes.community}>Questions from the Community</h3>
         <hr />
+        <div className={classes.questioncards}>
         {questions && questions.length > 0 ? (
           questions.map((q) => (
             <Link to={`/answers/${q.questionid}`} key={q.questionid}>
@@ -63,6 +62,8 @@ function Home() {
         ) : (
           <p>No questions posted yet.</p>
         )}
+
+        </div>
       </section>
     </div>
   );

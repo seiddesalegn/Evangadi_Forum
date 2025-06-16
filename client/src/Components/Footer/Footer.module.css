@@ -10,15 +10,17 @@
     margin-bottom: 8px;
 }
 .footer h3{
-    font-size: 18px;
+    font-size: 20px;
     margin: 10px 0;
     color: #fff;
+    font-weight: 400;
 }
 footer a{
     padding: 8px 10px;
     text-decoration: none;
+    font-size: 14px;
     color: #ccc;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 @media (max-width: 768px) {

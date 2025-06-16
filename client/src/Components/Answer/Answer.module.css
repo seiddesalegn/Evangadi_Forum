@@ -1,6 +1,6 @@
 .page {
   padding: 2rem;
-  max-width: 800px;
+  max-width: 85%;
   margin: auto;
   font-family: "Segoe UI", sans-serif;
   color: #222;
@@ -8,12 +8,19 @@
 
 /* Question Section */
 .questionSection {
-  background-color: rgba(230, 230, 230, 0.651);
   padding: 1.5rem;
   margin-bottom: 2rem;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+}
+.questionSection a{
+  text-decoration: none;
+}
+.arrowIcon {
+  color: blue;
+  padding-bottom: 2px;
+  margin-right: 6px;
+  margin-top: 6px;
 }
 
 .ribbon {
@@ -60,6 +67,10 @@
 }
 .subtitle{
   font-size:1.3rem;
+  display: inline-block;
+  border-bottom: 2px solid orange; /* orange line */
+  padding-bottom: 2px;
+  margin-right: 4px;
 }
 
 .body {
@@ -94,7 +105,6 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  background: #ffffff;
   padding: 1rem 1.2rem;
   border-radius: 8px;
   border: 1px solid #ddd;

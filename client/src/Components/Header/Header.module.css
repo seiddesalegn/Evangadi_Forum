@@ -3,13 +3,14 @@
   top: 0;
   background-color: #fff;
   box-shadow: 0 2px 5px #0000001a;
-  z-index: 1000;
 }
 
 .wrapper {
   display: flex;
+  width: 85%;
+  margin: 0 auto;
   gap: 130px;
-  justify-content: center;
+  justify-content: space-between;
   padding: 10px 20px;
   align-items: center;
 }
