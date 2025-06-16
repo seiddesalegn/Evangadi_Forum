@@ -23,12 +23,12 @@ function Footer() {
             <h3>useful Links</h3>
             <div>
                 <p><Link to="/howItworks">How it works</Link></p>
-                <p><Link to="#">Terms of use</Link></p>
-                <p><Link to="#">PrivLinkcy policy</Link></p>
+                <p><Link to="#">Terms of service</Link></p>
+                <p><Link to="#">Privacy policy</Link></p>
             </div>
         </div>
         <div>
-            <h3>Contact info</h3>
+            <h3>Contact Info</h3>
             <div>
                 <p><Link to="#">Evangadi Networks</Link></p>
                 <p><Link to="#">support@evangadi.com</Link></p>

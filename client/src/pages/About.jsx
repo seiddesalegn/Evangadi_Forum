@@ -15,11 +15,10 @@ function About() {
 
       <p>
         The forum also gives students hands-on experience building a real-world
-        full-stack app using technologies like React, Node.js, and MySQL — all
-        while learning and growing together.
+        full-stack app using technologies like React, Node.js, and MySQL.
       </p>
       <Link to="/howItworks">
-        <button>How it works</button>
+        <button className={style.howthiswork}>How it works</button>
       </Link>
     </div>
   );

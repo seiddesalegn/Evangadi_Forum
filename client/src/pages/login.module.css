@@ -7,7 +7,7 @@
     min-height: 95vh;
     background-image: url(../../public/10001.svg);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: fixed;
     background-size: 100%;
   }
   
@@ -15,6 +15,7 @@
     box-shadow: 0 5px 8px #ccc;
     margin: 5px 10px;
     padding: 45px;
+    min-width: 400px;
     max-width: 500px;
     width: 45%;
     background-color: #fff;
@@ -23,7 +24,7 @@
   }
   
   .aboutsection {
-    background-color: #fff;
+    /* background-color: #fff; */
     margin: 5px 10px;
     padding: 25px;
     max-width: 500px;
@@ -51,6 +52,23 @@
     font-family: inherit;
     font-size: 14px;
     box-sizing: border-box;
+  }
+  .loginbtn{
+    
+  background-color: #516cf0 !important;
+  }
+  .howthiswork{
+    width: 35% !important;
+    background-color: #ff8500 !important;
+  }
+  .forget{
+    text-align: right;
+
+  }
+  .forget a{
+    text-decoration: none;
+    color: #ff8500;
+    padding: 8px 4px !important;
   }
   
   .nameGroup {
@@ -129,7 +147,7 @@
   
   .privacy,
   .terms {
-    color: #0077cc;
+    color: #ff8500;
   }
   
   .agreementText a:hover {
@@ -141,7 +159,7 @@
   .aboutsection button {
     width: 100%;
     padding: 12px;
-    background-color: #ff8500;
+    background-color: #516cf0;
     color: #fff;
     font-size: 16px;
     border: none;
@@ -175,7 +193,11 @@
     font-size: 15px;
     line-height: 1.6;
   }
-  
+  @media (max-width: 800px){
+    .login{
+      width: 70%;
+    }
+  }
   /* Responsive for mobile */
   @media (max-width: 600px) {
     .login,
