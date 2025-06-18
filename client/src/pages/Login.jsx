@@ -7,7 +7,7 @@ import style from "./login.module.css";
 import About from "./About";
 
 function Login() {
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -24,22 +24,24 @@ function Login() {
       localStorage.setItem("token", data.token);
       window.location.href = "/";
     } catch (error) {
-      console.error("Error during login:", error);
-      setError(true);
+      const errorMsg = error.response?.data?.msg || "Login failed";
+      setError(errorMsg);
+      // console.log(error);
     }
   }
 
   return (
     <section className={style.wrapper}>
       <div className={style.login}>
-        {error && <span style={{ color: "red" }}>Something went wrong</span>}
-        <div style={{textAlign:'center'}}>
+        {error && <span style={{ color: "red" }}>{error}</span>}
+        <div style={{ textAlign: "center" }}>
           <h2>Login to your Account</h2>
-        <div>
-          <span>
-            Don't have an account? <Link to={"/register"}>Create a new account</Link>
-          </span>
-        </div>
+          <div>
+            <span>
+              Don't have an account?{" "}
+              <Link to={"/register"}>Create a new account</Link>
+            </span>
+          </div>
         </div>
         <form onSubmit={handleSubmit} className={style.loginform}>
           <div>
@@ -74,7 +76,9 @@ function Login() {
             <Link to="#">Forget password?</Link>
           </div>
 
-          <button type="submit" className={style.loginbtn}>Login</button>
+          <button type="submit" className={style.loginbtn}>
+            Login
+          </button>
         </form>
       </div>
       <About />

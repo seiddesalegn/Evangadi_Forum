@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AskQuestion.css";
 import axiosInstance from "../../Axios"; //pre-configured instance to make api request
-import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
+import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
 
 function AskQuestion() {
   const [title, setTitle] = useState("");
@@ -15,7 +15,8 @@ function AskQuestion() {
 
     const token = localStorage.getItem("token"); //gets auth token from local storage
 
-    try {//sends post request to question endpoint w/form data
+    try {
+      //sends post request to question endpoint w/form data
       await axiosInstance.post(
         "question",
         {
@@ -24,20 +25,21 @@ function AskQuestion() {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,//token auth header
+            Authorization: `Bearer ${token}`, //token auth header
           },
         }
       );
       //clears input field after successful submission
       setTitle("");
       setDetail("");
-      navigate("/");//navigate bk to home
-    } catch (err) { //logs error if api request fails 
-      console.error("Error posting question:", err);
+      navigate("/"); //navigate bk to home
+    } catch (err) {
+      //logs error if api request fails
+      // console.error("Error posting question:", err);
     }
   };
 
-    //return to render the form UI
+  //return to render the form UI
   return (
     <div className="ask-container">
       <div className="ask-wrapper">
@@ -76,13 +78,13 @@ function AskQuestion() {
             type="text"
             placeholder="Question title"
             name="title"
-            onChange={(e) => setTitle(e.target.value)}//gets input value from title 
+            onChange={(e) => setTitle(e.target.value)} //gets input value from title
           />
           <textarea
             className="ask-textarea"
             placeholder="Question detail ..."
             name="detail"
-            onChange={(e) => setDetail(e.target.value)}//gets input value from description 
+            onChange={(e) => setDetail(e.target.value)} //gets input value from description
           ></textarea>
 
           <button type="submit" className="ask-button">

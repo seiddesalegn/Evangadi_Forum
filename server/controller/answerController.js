@@ -17,7 +17,7 @@ const getAnswersByQuestionId = async (req, res) => {
 
     return res.status(StatusCodes.OK).json({ answers });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error: "Internal Server Error",
       message: "An unexpected error occurred.",
@@ -54,7 +54,7 @@ const postAnswer = async (req, res) => {
 
     return res.status(StatusCodes.CREATED).json(newAnswer);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error: "Internal Server Error",
       message: "An unexpected error occurred.",

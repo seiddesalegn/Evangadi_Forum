@@ -3,9 +3,8 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import axiosInstance from "../../Axios";
 import classes from "./Answer.module.css";
-import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
+import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
 
 export default function Answer() {
   const { questionId } = useParams();
@@ -32,7 +31,7 @@ export default function Answer() {
         setQuestion(res.data.question);
       })
       .catch((err) => {
-        console.error("❌ Error fetching question:", err.message);
+        // console.error("❌ Error fetching question:", err.message);
         setQuestion(null);
       })
       .finally(() => setLoading(false));
@@ -50,7 +49,7 @@ export default function Answer() {
         setAnswers(res.data.answers);
       })
       .catch((err) => {
-        console.error("❌ Error fetching answers:", err.message);
+        // console.error("❌ Error fetching answers:", err.message);
         setAnswers([]);
       });
   }, [questionId]);
@@ -85,7 +84,7 @@ export default function Answer() {
         },
         ...prev,
       ]);
-      navigate('/')
+      navigate("/");
 
       setNewAnswer("");
       setSuccess("Answer posted successfully!");
@@ -102,18 +101,16 @@ export default function Answer() {
     <div className={classes.page}>
       {/* QUESTION */}
       <section className={classes.questionSection}>
-        <Link to='/'>
-        <h2 className={classes.ribbon}>QUESTION</h2>
-      
+        <Link to="/">
+          <h2 className={classes.ribbon}>QUESTION</h2>
         </Link>
         <div className={classes.meta}>
           <span className={classes.arrowIcon}>
-          <ArrowCircleRightRoundedIcon />
+            <ArrowCircleRightRoundedIcon />
           </span>
           <code className={classes.subtitle}>{question.title}</code>
         </div>
         <p className={classes.body}>{question.description}</p>
-        
       </section>
 
       {/* ANSWERS */}
@@ -127,11 +124,11 @@ export default function Answer() {
             answers.map((ans) => (
               <div key={ans.answerid} className={classes.answerCard}>
                 <div>
-                <div className={classes.avatarCircle}>
-                  <AccountCircleIcon className={classes.avatarIcon} />
-                </div>
-                  <strong>{ans.user_name || "Unknown user"}</strong>
+                  <div className={classes.avatarCircle}>
+                    <AccountCircleIcon className={classes.avatarIcon} />
                   </div>
+                  <strong>{ans.user_name || "Unknown user"}</strong>
+                </div>
 
                 <div className={classes.answerContent}>
                   <p>{ans.answer || "No content."}</p>

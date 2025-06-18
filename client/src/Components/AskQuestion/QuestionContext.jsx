@@ -17,7 +17,7 @@ export function QuestionProvider({ children }) {
       });
       setQuestions(res.data.questions);
     } catch (err) {
-      console.error("Failed to fetch questions", err);
+      // console.error("Failed to fetch questions", err);
     }
   };
 

@@ -16,7 +16,7 @@ function Header() {
 
         setUser(decoded);
       } catch (error) {
-        console.error("Invalid token:", error.message);
+        // console.error("Invalid token:", error.message);
         localStorage.removeItem("token");
       }
     }

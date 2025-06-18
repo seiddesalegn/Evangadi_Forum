@@ -21,7 +21,7 @@ async function getQuestions(req, res) {
 
     return res.status(StatusCodes.OK).json({ questions: rows });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error: "Internal Server Error",
       message: "An unexpected error occurred.",
@@ -48,7 +48,7 @@ async function getSingleQuestion(req, res) {
 
     return res.status(StatusCodes.OK).json({ question: rows[0] });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error: "Internal Server Error",
       message: "An unexpected error occurred.",
@@ -82,7 +82,7 @@ async function postQuestion(req, res) {
       questionid,
     });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error: "Internal Server Error",
       message: "An unexpected error occurred.",

@@ -48,7 +48,7 @@ function Register() {
       });
       navigate("/login");
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       setError(true);
     }
   };
@@ -56,9 +56,11 @@ function Register() {
   return (
     <section className={style.wrapper}>
       <div className={style.login}>
-        <div style={{textAlign:'center'}}>
-        <h2>Join the network</h2><div
-            style={{ textAlign: "center", marginTop: "6px", color: "#ff8500" }}>
+        <div style={{ textAlign: "center" }}>
+          <h2>Join the network</h2>
+          <div
+            style={{ textAlign: "center", marginTop: "6px", color: "#ff8500" }}
+          >
             Already have an account? <Link to="/login">Sign in</Link>
           </div>
         </div>
@@ -136,8 +138,6 @@ function Register() {
           </div>
 
           <button type="submit">Agree and Join</button>
-
-          
         </form>
 
         {field && (

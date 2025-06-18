@@ -46,7 +46,7 @@ router.get("/create-table", async (req, res) => {
 
     res.send("All tables created successfully!");
   } catch (error) {
-    console.error("Error creating tables:", error);
+    // console.error("Error creating tables:", error);
     res.status(500).send("Table creation failed.");
   }
 });
