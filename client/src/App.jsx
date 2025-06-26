@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Howitworks from "./Components/HowItWorks/HowItWorks";
@@ -45,7 +45,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Home />} />
+        <Route
+          path="*"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
     </>

@@ -24,7 +24,7 @@ const authMiddleware = require("./middleware/authMiddleware");
 // Use routes (middleware)
 app.use("/", createTableRoute);
 app.use("/api/user", userRoutes);
-app.use("/api/question", questionRoutes);
+app.use("/api/question", authMiddleware, questionRoutes);
 app.use("/api/answer", authMiddleware, answerRoutes);
 
 // Start function
