@@ -138,23 +138,38 @@ button {
 } 
 
 
-.loadMoreWrapper {
-  text-align: center;
-  margin-top: 20px;
+
+/* Pagination */
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 16px;
 }
 
-.loadMoreBtn {
+.pageBtn {
   background-color: #007bff;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.loadMoreBtn:hover {
-  background-color: #0056b3;
+.pageBtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
+
+.pageText {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+
+
+
 
