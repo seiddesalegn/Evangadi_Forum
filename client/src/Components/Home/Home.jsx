@@ -16,11 +16,11 @@ function Home() {
   const { questions } = useContext(QuestionContext);
   const [loading, setLoading] = useState(true);
 
-  // search bar
   const [searchTerm, setSearchTerm] = useState("");
-  const [visibleCount, setVisibleCount] = useState(10); // Show first 10 questions
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
-  // Decode user token
+  // Decode token
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token && typeof token === "string") {
@@ -33,32 +33,36 @@ function Home() {
     }
   }, []);
 
-  // Stop loader after questions load
+  // Handle loader
   useEffect(() => {
     if (questions) {
       setLoading(false);
     }
   }, [questions]);
 
-  // Filter questions dynamically by search
+  // Filter by search
   const filteredQuestions = questions?.filter((q) =>
     q.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Show limited number of questions
-  const visibleQuestions = filteredQuestions?.slice(0, visibleCount);
+  const totalPages = Math.ceil(filteredQuestions?.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentQuestions = filteredQuestions?.slice(startIndex, endIndex);
 
-  // Load more handler
-  const loadMore = () => {
-    setVisibleCount((prev) => prev + 10);
+  const handleNext = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
-  // Show loading animation while data loads
+  const handlePrev = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
   if (loading) return <RubikLoader />;
 
   return (
     <div className={classes.homeContainer}>
-      {/* Welcome & Ask Question */}
+      {/* Header */}
       <div className={classes.welcome}>
         <Link to="/Askquestion" className={classes.askbtn}>
           Ask Question
@@ -71,24 +75,27 @@ function Home() {
         </p>
       </div>
 
-      {/* Search Bar */}
+      {/* Search */}
       <div className={classes.searchBarWrapper}>
         <input
           type="text"
           placeholder="Search questions..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setCurrentPage(1); // reset to page 1 when searching
+          }}
           className={classes.searchInput}
         />
       </div>
 
-      {/* Questions Section */}
+      {/* Questions */}
       <section>
         <hr />
         <div className={classes.questioncards}>
-          {questions && questions.length > 0 ? (
+          {filteredQuestions?.length > 0 ? (
             <>
-              {visibleQuestions.map((q) => (
+              {currentQuestions.map((q) => (
                 <Link to={`/answers/${q.questionid}`} key={q.questionid}>
                   <div className={classes.askpara}>
                     <div className={classes.userBlock}>
@@ -112,17 +119,31 @@ function Home() {
                 </Link>
               ))}
 
-              {/* Load More Button */}
-              {filteredQuestions.length > visibleCount && (
-                <div className={classes.loadMoreWrapper}>
-                  <button onClick={loadMore} className={classes.loadMoreBtn}>
-                    Load More
-                  </button>
-                </div>
-              )}
+              {/* Pagination */}
+              <div className={classes.paginationWrapper}>
+                <button
+                  onClick={handlePrev}
+                  disabled={currentPage === 1}
+                  className={classes.pageBtn}
+                >
+                  ← Previous
+                </button>
+
+                <span className={classes.pageText}>
+                  Page {currentPage} of {totalPages}
+                </span>
+
+                <button
+                  onClick={handleNext}
+                  disabled={currentPage === totalPages}
+                  className={classes.pageBtn}
+                >
+                  Next →
+                </button>
+              </div>
             </>
           ) : (
-            <p>No questions posted yet.</p>
+            <p>No questions found.</p>
           )}
         </div>
       </section>
