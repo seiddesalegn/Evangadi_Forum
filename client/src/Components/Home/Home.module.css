@@ -12,15 +12,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top:3.5rem;
+  margin-top: 3.5rem;
   margin-bottom: 4rem;
 }
-.welcome p{
+.welcome p {
   font-weight: bold;
 }
 
 .usernameRed {
-  color: red;
+  color: #ff8500;
   font-weight: bold;
 }
 
@@ -39,9 +39,9 @@
 .askbtn:hover {
   background-color: #0056b3;
 }
-.community{
-  font-size:1.5rem;
-  margin-bottom:1rem;
+.community {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 .askpara {
   display: flex;
@@ -79,11 +79,10 @@
   height: 60px;
   border-radius: 50%;
   background-color: white;
-  border: 1px solid gray ;
+  border: 1px solid gray;
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .avatarIcon {
@@ -116,4 +115,11 @@ button {
   font-size: 24px;
   color: black;
   cursor: pointer;
+}
+/* date */
+.dateText {
+  font-size: 13px;
+  color: #0056b3;
+  font-weight: 500;
+  margin-top: 4px;
 }

@@ -5,6 +5,10 @@ import { QuestionContext } from "../AskQuestion/QuestionContext";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { jwtDecode } from "jwt-decode";
 import RubikLoader from "../Loader/Loader";
+// day formatting
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 function Home() {
   const [user, setUser] = useState({});
@@ -62,6 +66,9 @@ function Home() {
                     </div>
                     <div className={classes.questionContent}>
                       <div className={classes.questionTitle}>{q.title}</div>
+                      <div className={classes.dateText}>
+                        {dayjs(q.created_at).fromNow()}
+                      </div>
                     </div>
                   </div>
                   <button>&#62;</button>
