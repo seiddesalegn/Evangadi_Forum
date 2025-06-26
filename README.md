@@ -2,74 +2,68 @@
 
 ## Project Overview
 
-The **Evangadi Forum Q&A Platform** is a full-stack web application that enables users to post questions, answer them, and engage in community-based interactions. It features user authentication, a robust backend API, and a responsive frontend built using modern technologies.
+The **Evangadi Forum Q&A Platform** is a full-stack web application that enables users to ask and answer questions, similar to Stack Overflow. It supports user authentication, secure API integration, and community-based interaction. The platform is built with modern technologies, focusing on performance, user experience, and scalability.
+
+> 🔗 **Live Site:** [evanforum.com](https://evanforum.com)
 
 ---
 
-## 1. Database Design & Configuration
+## 🚀 Features
 
-### Database Engine
+- 🔐 User registration & login (JWT-based authentication)
+- ❓ Post questions with title and detailed description
+- 💬 Answer questions from other users
+- 🧑 Profile-aware question tracking
+- 🔎 Community questions feed
+- 🧱 RESTful backend with protected routes
+- 📱 Responsive frontend UI with clean design
+- 🌀 Loading states using React Spinners
 
-**Type:** MySQL  
-**Database Name:** `evangadi_forum`
+---
 
-### Table Structures
+## 🛠️ Tech Stack
 
-#### `users` Table
+### 📌 Frontend:
 
-```sql
-CREATE TABLE IF NOT EXISTS users (
-  userid INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(20) NOT NULL,
-  firstname VARCHAR(20) NOT NULL,
-  lastname VARCHAR(20) NOT NULL,
-  email VARCHAR(40) NOT NULL,
-  password VARCHAR(100) NOT NULL
-);
-🔹 questions Table
-CREATE TABLE IF NOT EXISTS questions (
-  id INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  questionid VARCHAR(100) NOT NULL UNIQUE,
-  userid INT(20) NOT NULL,
-  title VARCHAR(50) NOT NULL,
-  description VARCHAR(200) NOT NULL,
-  tag VARCHAR(20),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY(userid) REFERENCES users(userid)
-);
-🔹 answers Table
-CREATE TABLE IF NOT EXISTS answers (
-  answerid INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  userid INT(20) NOT NULL,
-  questionid VARCHAR(100) NOT NULL,
-  answer VARCHAR(200) NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY(userid) REFERENCES users(userid),
-  FOREIGN KEY(questionid) REFERENCES questions(questionid)
-);
+- React.js
+- React Router DOM
+- CSS Modules
+- Axios
+- React Spinners
 
-Table Creation Execution
-await db.query(users);
-await db.query(questions);
-await db.query(answers);
-res.send("All tables created successfully!");
+### 📌 Backend:
 
-## Configuration
-Create a .env or config.js file for database and secret key storage:
+- Node.js
+- Express.js
+- MySQL (Relational DB)
+- JWT for authentication
+- UUID for unique IDs
 
-USER=evangadi_admin (User name)
-DATABASE=evangadi_db (Database name)
-PASSWORD=Password
-JWT_SECRET=jwt_secret_key
-Never expose this file in public repositories.
+---
 
-** 2. API Development & Documentation
- Authentication Middleware
-Endpoint: /api/checkUser
-Function: Verifies JWT tokens
-Success Response: 200 OK
-Failure Response: 401 Unauthorized
-Use HTTPS in production for security.
+## 🧪 How to Run Locally
+
+### 1. Clone the Repository
+
+```bash
+
+git clone https://github.com/yourusername/evangadi-forum.git
+cd evangadi-forum
 
 
+2. Setup Backend
+
+cd server
+npm install
+
+create your .env file
+
+Start the server
+npm start
+
+3. Setup Frontend
+
+cd client
+npm install
+npm run dev
 ```
