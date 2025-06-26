@@ -4,10 +4,12 @@ import classes from "./Home.module.css";
 import { QuestionContext } from "../AskQuestion/QuestionContext";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { jwtDecode } from "jwt-decode";
+import RubikLoader from "../Loader/Loader";
 
 function Home() {
   const [user, setUser] = useState({});
   const { questions } = useContext(QuestionContext);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -22,6 +24,13 @@ function Home() {
       }
     }
   }, []);
+  useEffect(() => {
+    if (questions) {
+      setLoading(false);
+    }
+  }, [questions]);
+
+  if (loading) return <RubikLoader />;
 
   return (
     <div className={classes.homeContainer}>

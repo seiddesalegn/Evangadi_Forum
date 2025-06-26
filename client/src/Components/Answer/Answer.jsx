@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
 import axiosInstance from "../../Axios";
 import classes from "./Answer.module.css";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import RubikLoader from "../Loader/Loader";
 
 export default function Answer() {
   const { questionId } = useParams();
@@ -94,8 +94,7 @@ export default function Answer() {
     }
   };
 
-  if (loading) return <p>Loading…</p>;
-  if (!question) return <p>Question not found.</p>;
+  if (loading) return <RubikLoader />;
 
   return (
     <div className={classes.page}>

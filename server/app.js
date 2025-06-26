@@ -31,13 +31,13 @@ app.use("/api/answer", authMiddleware, answerRoutes);
 async function start() {
   try {
     const [result] = await db.execute("SELECT 'test'");
-    // console.log("DB connected:", result);
+    console.log("DB connected:", result);
 
     app.listen(port, () => {
-      // console.log(`Server running at http://localhost:${port}`);
+      console.log(`Server running at http://localhost:${port}`);
     });
   } catch (error) {
-    // console.error("DB Connection Failed:", error.message);
+    console.error("DB Connection Failed:", error.message);
   }
 }
 
