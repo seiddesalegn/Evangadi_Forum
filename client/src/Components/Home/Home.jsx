@@ -67,7 +67,9 @@ function Home() {
                     <div className={classes.questionContent}>
                       <div className={classes.questionTitle}>{q.title}</div>
                       <div className={classes.dateText}>
-                        {dayjs(q.created_at).fromNow()}
+                        {`${dayjs(q.created_at).fromNow()} • ${dayjs(
+                          q.created_at
+                        ).format("MMM D")}`}
                       </div>
                     </div>
                   </div>

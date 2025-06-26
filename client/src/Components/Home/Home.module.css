@@ -91,9 +91,8 @@
 }
 
 .askerName {
-  margin-top: 8px;
-  font-size: 14px;
-  color: bold;
+  font-size: 12px;
+  color: #3b455a;
   font-weight: 600;
   text-align: center;
   word-break: break-word;
@@ -104,7 +103,7 @@
 }
 
 .questionTitle {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: bold;
 }
@@ -118,7 +117,7 @@ button {
 }
 /* date */
 .dateText {
-  font-size: 13px;
+  font-size: 12px;
   color: #0056b3;
   font-weight: 500;
   margin-top: 4px;
