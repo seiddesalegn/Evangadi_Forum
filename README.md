@@ -51,16 +51,16 @@ cd evangadi-forum
 
 2. Setup Backend
 
-cd backend
+cd server
 npm install
 
 create your .env file
 
 Start the server
-npm run dev
+npm start
 
 3. Setup Frontend
 
-cd ../frontend
+cd client
 npm install
-npm start
+npm run dev
