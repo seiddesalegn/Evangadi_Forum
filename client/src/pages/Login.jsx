@@ -73,7 +73,7 @@ function Login() {
             </div>
           </div>
           <div className={style.forget}>
-            <Link to="#">Forget password?</Link>
+            <Link to="/reset">Forget password?</Link>
           </div>
 
           <button type="submit" className={style.loginbtn}>
