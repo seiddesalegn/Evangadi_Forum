@@ -110,7 +110,7 @@ function Home() {
                         <div className={classes.dateText}>
                           {`${dayjs(q.created_at).fromNow()} • ${dayjs(
                             q.created_at
-                          ).format("MMM D")}`}
+                          ).format("MMM D, YYYY")}`}
                         </div>
                       </div>
                     </div>

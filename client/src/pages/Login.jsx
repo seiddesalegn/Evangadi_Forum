@@ -5,12 +5,14 @@ import axiosInstance from "../Axios";
 import { Link } from "react-router-dom";
 import style from "./login.module.css";
 import About from "./About";
+import { ClipLoader } from "react-spinners";
 
 function Login() {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [load, setLoad] = useState(true);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -23,6 +25,7 @@ function Login() {
 
       localStorage.setItem("token", data.token);
       window.location.href = "/";
+      setLoad(false);
     } catch (error) {
       const errorMsg = error.response?.data?.msg || "Login failed";
       setError(errorMsg);
@@ -77,7 +80,11 @@ function Login() {
           </div>
 
           <button type="submit" className={style.loginbtn}>
-            Login
+            {!load ? (
+              <ClipLoader size={18} color="#FF8500" speedMultiplier={0.8} />
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
       </div>
