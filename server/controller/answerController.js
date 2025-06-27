@@ -62,4 +62,82 @@ const postAnswer = async (req, res) => {
   }
 };
 
-module.exports = { getAnswersByQuestionId, postAnswer };
+// PUT /api/answer/:answer_id
+const updateAnswer = async (req, res) => {
+  const { answer_id } = req.params;
+  const { answer } = req.body;
+  const userid = req.user?.userid;
+
+  if (!answer || !userid) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      error: "Bad Request",
+      message: "Answer content is required.",
+    });
+  }
+
+  try {
+    const [result] = await db.query(
+      "UPDATE answers SET answer = ? WHERE answerid = ? AND userid = ?",
+      [answer, answer_id, userid]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(StatusCodes.NOT_FOUND).json({
+        error: "Not Found",
+        message: "Answer not found or unauthorized.",
+      });
+    }
+
+    return res.status(StatusCodes.OK).json({
+      message: "Answer updated successfully.",
+      answer: {
+        answerid: parseInt(answer_id),
+        answer,
+        userid,
+      },
+    });
+  } catch (error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      error: "Internal Server Error",
+      message: "An unexpected error occurred.",
+    });
+  }
+};
+
+
+// DELETE /api/answer/:answer_id
+const deleteAnswer = async (req, res) => {
+  const { answer_id } = req.params;
+  const userid = req.user?.userid;
+
+  try {
+    const [result] = await db.query(
+      "DELETE FROM answers WHERE answerid = ? AND userid = ?",
+      [answer_id, userid]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(StatusCodes.NOT_FOUND).json({
+        error: "Not Found",
+        message: "Answer not found or unauthorized.",
+      });
+    }
+
+    return res.status(StatusCodes.OK).json({
+      message: "Answer deleted successfully.",
+      answerid: parseInt(answer_id),
+      userid,
+    });
+  } catch (error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      error: "Internal Server Error",
+      message: "An unexpected error occurred.",
+    });
+  }
+};
+
+module.exports = {
+  getAnswersByQuestionId,
+  postAnswer,
+  updateAnswer,
+  deleteAnswer};
