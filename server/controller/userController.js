@@ -42,7 +42,7 @@ async function register(req, res) {
       .status(StatusCodes.CREATED)
       .json({ msg: "User created successfully" });
   } catch (error) {
-    // console.log(error.message);
+    console.log(error.message);
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ msg: "Something went wrong, try again later" });
@@ -88,12 +88,54 @@ async function login(req, res) {
       .status(StatusCodes.OK)
       .json({ msg: "User login successfully", token });
   } catch (error) {
-    // console.log(error.message);
+    console.log(error.message);
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ msg: "Something went wrong, try again later" });
   }
 }
+
+//reset account
+
+async function reset(req, res) {
+  const { email, username } = req.body;
+
+  // Check for missing fields
+  if (!email || !username) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      msg: "Both email and username are required",
+    });
+  }
+
+  try {
+    const [user] = await db.query(
+      "SELECT * FROM users WHERE email = ? AND username = ?",
+      [email, username]
+    );
+
+    if (user.length === 0) {
+      return res.status(StatusCodes.NOT_FOUND).json({
+        msg: "Username does not exist for this email",
+      });
+    }
+
+    await db.query("DELETE FROM users WHERE email = ?", [email]);
+
+    return res.status(StatusCodes.OK).json({
+      success:
+        "User account deleted successfully. You can now create a new account with this email.",
+    });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      msg: "Something unexpected occurred. Try again later.",
+    });
+  }
+}
+
+
+
+
 
 async function checkUser(req, res) {
   const username = req.user.username;
@@ -101,4 +143,4 @@ async function checkUser(req, res) {
   res.status(StatusCodes.OK).json({ msg: "user verified", username, userid });
 }
 
-module.exports = { register, login, checkUser };
+module.exports = { register, login, checkUser, reset };
