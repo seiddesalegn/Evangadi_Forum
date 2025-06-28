@@ -30,6 +30,7 @@ The **Evangadi Forum Q&A Platform** is a full-stack web application that enables
 - CSS Modules
 - Axios
 - React Spinners
+- Material UI
 
 ### 📌 Backend:
 
