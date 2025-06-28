@@ -16,6 +16,6 @@ const {
 router.get("/all-questions", getQuestions);
 router.get("/:question_id", getSingleQuestion);
 // protected view
-router.post("/", authMiddleware, postQuestion);
+router.post("/", postQuestion);
 
 module.exports = router;
